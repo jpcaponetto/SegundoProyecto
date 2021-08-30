@@ -1,14 +1,37 @@
-// LogIn
 class User
 {
-    constructor(userName, password, mail)
+    constructor(id, firstName, lastName, password, mail, birthDate, phone, adress, friendsList)
     {
-        this.userName = userName;
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.password = password;
+        this.birthDate = birthDate;
+        this.phone = phone;
+        this.adress = adress;
+        this.friendsList = friendsList;
         this.mail = mail;
+        this.isActive = true;
+        this.isAdmin = false;
     }
 }
 
+class Post
+{
+    constructor(id, user, text, mediaLink, likes, date)
+    {
+        this.id = id;
+        this.user = user;
+        this.text = text;
+        this.mediaLink = mediaLink;
+        this.likes = likes;
+        this.date = date;
+    }
+}
+
+
+
+// LogIn
 let usuarios = [];
 
 
