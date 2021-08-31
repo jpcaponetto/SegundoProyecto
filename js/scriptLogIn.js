@@ -3,6 +3,7 @@ class User
     constructor(id, firstName, lastName, password, mail, birthDate, phone, adress, friendsList)
     {
         this.id = id;
+        this.name = firstName + " " +lastName;
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
