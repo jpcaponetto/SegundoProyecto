@@ -102,7 +102,15 @@ function userRegister()
 
 //Dark theme
 
+let logIn = document.getElementById("logIn");
+let welcome = document.getElementById("welcome");
+let logFourm = document.getElementById("logFourm");
+
 function switchColor()
 {
     document.body.classList.toggle("dark");
+
+    logIn.classList.toggle("dark");
+    welcome.classList.toggle("dark");
+    logFourm.classList.toggle("dark");
 }
