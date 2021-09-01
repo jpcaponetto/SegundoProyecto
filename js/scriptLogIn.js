@@ -55,6 +55,7 @@ function LogIn()
     if(currentUser)
     {
         console.log("Login Succesfully");
+        document.location="mainred.html";
     }
     else
     {
