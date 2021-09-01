@@ -1,19 +1,20 @@
 class User
 {
-    constructor(id, firstName, lastName, password, mail, birthDate, phone, adress, friendsList)
+    constructor(id, firstName, lastName, password, mail, birthDate, phone, friendsList, name, profilePic)
     {
         this.id = id;
-        this.name = firstName + " " +lastName;
+        this.name = name;
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
         this.birthDate = birthDate;
         this.phone = phone;
-        this.adress = adress;
         this.friendsList = friendsList;
         this.mail = mail;
         this.isActive = true;
         this.isAdmin = false;
+        this.profilePic = profilePic;
+       
     }
 }
 
@@ -45,49 +46,37 @@ if(localStorage.getItem('usuarios'))
 
 function LogIn()
 {
-    correctLogIn = false;
-    username = document.getElementById("userName");
-    password = document.getElementById("password");
-    console.log(usuarios);
-    let currentUser;
+    
+    usermail = document.getElementById("userMail").value;
+    password = document.getElementById("password").value;
+   
+    let currentUser = usuarios.find(usuario => usuario.mail == usermail && usuario.password == password);
 
-    for(let i = 0; i < usuarios.length; i++)
+    if(currentUser)
     {
-        console.log(usuarios[i].userName);
-        currentUser = usuarios[i];
-       
-        if(currentUser.userName == username.value && currentUser.password == password.value)
-        {
-            correctLogIn = true;
-        }
-        else
-        {
-            correctLogIn = false;
-        }
-    }
-
-    if(correctLogIn == true)
-    {
-        console.log("Login Sussesfully");
+        console.log("Login Succesfully");
     }
     else
     {
         console.log("Error, wrong password or username");
-        console.log(usuarios.toString());
+        console.log(currentUser);
     }
 }
 
 function userRegister()
 {
-    let username = prompt("Ingresar Nombre de Usuario", "Nombre");
-    let password = prompt("Ingresar Contraseña", "contraseña");
-    let mail = prompt("Ingresar Correo Electronico", "example@gmail.com");    
-
     let userNew = new User;
-    userNew.userName = username;
-    userNew.password = password;
-    userNew.mail =mail;
-    if(userNew.userName != null && userNew.password != null && userNew.mail != null)
+    userNew.id = usuarios.length;
+    userNew.firstName = document.getElementById("name").value;
+    userNew.lastName = document.getElementById("lastname").value;
+    userNew.password = document.getElementById("password").value;
+    userNew.name = userNew.firstName + " " + userNew.lastName;
+    userNew.mail = document.getElementById("mail").value;
+    userNew.phone = document.getElementById("phone").value;
+    userNew.birthDate = document.getElementById("birthdate").value;
+   
+   
+    if(userNew.firstName != null && userNew.password != "" && !validateMail(userNew.mail))
     {
         usuarios.push(userNew);
         localStorage.setItem('usuarios', JSON.stringify(usuarios));
@@ -96,9 +85,20 @@ function userRegister()
     }
     else
     {
-        console.log("Error");
+        console.log("Error datos no validos");
+        console.log(userNew.password);
     }
 }
+
+//validar Mail para que no puedan registrar mas de una cuenta con cada uno
+
+function validateMail(mail)
+{
+    const valid = usuarios.find(usuario => usuario.mail == mail)
+
+    return valid;
+}
+
 //Login
 
 //Dark theme
