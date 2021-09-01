@@ -35,7 +35,7 @@ class Post
 
 // LogIn
 let usuarios = [];
-
+let usuarioLog;
 
 if(localStorage.getItem('usuarios'))
 {
@@ -55,10 +55,13 @@ function LogIn()
     if(currentUser)
     {
         console.log("Login Succesfully");
+        usuarioLog = currentUser;
+        document.location="index.html";
     }
     else
     {
         console.log("Error, wrong password or username");
+        alert
         console.log(currentUser);
     }
 }
