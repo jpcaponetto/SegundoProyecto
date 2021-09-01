@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<head>
+    <title>Registro</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styleLogIn.css"></link>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+</head>
+<body>
+    <header>
+
+    </header>
+    <main>
+        <form>
+            <label for="name">Nombre</label>
+            <br>
+            <input id="name" class="form-control" type="text" placeholder="Nombre">
+            <label for="lastname">Apellido</label>
+            <br>
+            <input id="lastname" class="form-control" type="text" placeholder="Apellido">
+            <label for="password">Contraseña</label>
+            <br>
+            <input id="password" class="form-control" type="password" placeholder="contraseña">
+            <label for="birthdate">Fecha de Nacimiento</label>
+            <br>
+            <input id="birthdate" class="form-control" type="date">
+            <label for="mail">Correo Electronico</label>
+            <br>
+            <input id="mail" class="form-control" type="mail" placeholder="example@gmail.com">
+            <label for="phone">Telefono</label>
+            <br>
+            <input id="phone" class="form-control" type="phone" placeholder="381-000-0000">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-success" onclick="userRegister()">Registrarse</button>
+          </form>
+    <script src="js/scriptLogIn.js"></script>
+    </main>
+</body>
+
