@@ -102,12 +102,6 @@ function validateMail(mail)
 //Login
 
 //Dark theme
-<<<<<<< HEAD
-function switchColor()
-{
-    document.body.classList.toggle("dark");
-}
-=======
 
 let logIn = document.getElementById("logIn");
 let welcome = document.getElementById("welcome");
@@ -121,4 +115,3 @@ function switchColor()
     welcome.classList.toggle("dark");
     logFourm.classList.toggle("dark");
 }
->>>>>>> 4041e84623140acd2e0a82bbf24e0cd199ab4301
