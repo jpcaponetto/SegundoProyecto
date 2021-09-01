@@ -1,17 +1,23 @@
+/* Subida de foto */
 
 let usuariosFotos = [];
 let imagen = document.getElementById('img').value;
-
+let user = localStorage.getItem('usuarios')
+let username = JSON.parse(user)
+console.log(username[0]['name'])
 function envioFoto(){
     let imagen = document.getElementById('img').value;
     let img = new Image();
     img.src = imagen;
-    let foto = document.getElementById('foto');
-    let nuevoUl = document.createElement('ul');
-    let nuevoLi = document.createElement('li');
-    nuevoLi.append(img)
-    nuevoUl.append(nuevoLi);
-    foto.append(nuevoUl );
+    let foto = document.getElementById('contenedorImg');
+    let usuario = document.createElement('p');
+    let div = document.createElement('div');
+    usuario.innerHTML = username[0]['name'];
+    div.append(usuario);
+    div.append(img)
+    foto.append(div)
+    
+    div.className = 'foto'
 
     usuariosFotos.push(imagen)
 

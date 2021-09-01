@@ -1,18 +1,22 @@
-.foto ul{
+.imagen{
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    width: 100%;
 }
-.foto ul li img{
+.foto {
+    padding: 1rem 0 3rem 0;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin: 2rem 0;
+}
+.foto p::first-letter{
+    text-transform: uppercase;
+}
+.foto p{
+    font-size: 20px;
+    margin-left: 20px;
+}
+.foto img{
     width: 500px;
     height: 500px;
-}
-.foto ul li{
-    list-style: none;
-    padding: 3rem 0;
-    margin: 1rem 0;
-    border: 1px solid grey;
-    border-radius: 20px;
 }
