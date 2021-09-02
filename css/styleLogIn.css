@@ -1,13 +1,12 @@
 body
 {
     overflow-x: hidden;
-    overflow-y: hidden;
 }
 
 .logIn
 {
+    padding-top: 80px;
     transition:1s ease all;
-    padding-top: 30px;
     align-content: center;
     background-color: #EAE2B7;
     overflow-x: hidden;
@@ -15,7 +14,6 @@ body
 }
 .logIn.dark
 {
-    padding-top: 30px;
     align-content: center;
     transition:1s ease all;
     background-color: black;
@@ -42,6 +40,7 @@ body
 
 .logFourm
 {
+    margin: 20px;
     transition:1s ease all;
     border: solid rgba(0, 0, 0, 0.356) 2px;
     padding: 50px;

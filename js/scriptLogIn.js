@@ -31,7 +31,9 @@ class Post
     }
 }
 
-
+let defaultProfPic = new Image;
+defaultProfPic.src = "https://www.sogapar.info/wp-content/uploads/2015/12/default-user-image.png";
+let listaAmigos = [];
 // LogIn
 let usuarios = [];
 
@@ -75,9 +77,11 @@ function userRegister()
     userNew.mail = document.getElementById("mail").value;
     userNew.phone = document.getElementById("phone").value;
     userNew.birthDate = document.getElementById("birthdate").value;
+    userNew.profilePic = defaultProfPic.src;
+    userNew.friendsList = listaAmigos;
    
    
-    if(userNew.firstName != null && userNew.password != "" && !validateMail(userNew.mail))
+    if(userNew.firstName != "" && userNew.password != "" && !validateMail(userNew.mail))
     {
         usuarios.push(userNew);
         localStorage.setItem('usuarios', JSON.stringify(usuarios));
@@ -86,6 +90,32 @@ function userRegister()
     }
     else
     {
+        if(userNew.firstName == "")
+        {
+            alert("Por favor, ingresar un nombre.")
+        }
+        if(userNew.lastName == "")
+        {
+            alert("Por favor, ingresar un apellido.")
+        }
+        if(userNew.firstPassword == "")
+        {
+            alert("Por favor, ingresar una contraseña.")
+        }
+        if(userNew.mail == "")
+        {
+            alert("Por favor, ingresar una direccion de Correo.")
+        }
+        if(userNew.phone == "")
+        {
+            alert("Por favor, ingresar un numero de telefono.")
+        }
+        if(userNew.firstName == "")
+        {
+            alert("Por favor, ingresar una fecha de nacimiento.")
+        }
+
+
         console.log("Error datos no validos");
         console.log(userNew.password);
     }
@@ -101,6 +131,19 @@ function validateMail(mail)
 }
 
 //Login
+function goLogIn()
+{
+    if(confirm("¿Regresar a la pagina de inicio?") )
+    {
+      document.location="LogIn.html";
+    }
+    else
+    {
+        document.location="register.html";
+    }
+}
+
+
 
 //Dark theme
 
