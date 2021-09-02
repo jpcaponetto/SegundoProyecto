@@ -40,7 +40,7 @@ function makePost(){
     let newPost = new Post;
 
     newPost.id = usuariosPost.length;
-    newPost.date = Date.now().toString();
+    newPost.date = Date();
     newPost.mediaLink = document.getElementById('imgPost').value;
     newPost.text = document.getElementById('textPost').value;
     newPost.likes = 0;
@@ -97,13 +97,15 @@ function postsList()
         let postUser = document.createElement('p');
         let foto = document.getElementById('foto');
         
+
         let img = new Image;
 
         img.src = usuariosPost[i].mediaLink;
         postText = usuariosPost[i].text;
-        postDate = usuariosPost[i].Date;
+        postDate = new Date(usuariosPost[i].date);
         postUser = usuarioLog.name;
 
+        
 
         nuevoLi.append(postUser);
         nuevoLi.append(img);
