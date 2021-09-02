@@ -5,6 +5,7 @@ let imagen = document.getElementById('img').value;
 let user = localStorage.getItem('usuarios')
 let username = JSON.parse(user)
 console.log(username[0]['name'])
+
 function envioFoto(){
     let imagen = document.getElementById('img').value;
     let img = new Image();
