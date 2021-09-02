@@ -32,17 +32,13 @@ class Post
 }
 
 
-
 // LogIn
 let usuarios = [];
-let usuarioLog;
 
 if(localStorage.getItem('usuarios'))
 {
     usuarios = JSON.parse(localStorage.getItem('usuarios'))
 }
-
-
 
 function LogIn()
 {
@@ -55,10 +51,9 @@ function LogIn()
     if(currentUser)
     {
         console.log("Login Succesfully");
-        usuarioLog = currentUser;
+        localStorage.setItem('usuarioLog', JSON.stringify(currentUser));
         document.location="mainred.html";
         console.log(currentUser);
-
     }
     else
     {
