@@ -102,9 +102,10 @@ function postsList()
 
         img.src = usuariosPost[i].mediaLink;
         postText = usuariosPost[i].text;
-        postDate = new Date(usuariosPost[i].date);
+        postDate = new Date(usuariosPost[i].date).toLocaleDateString();
+        console.log(postDate);
         postUser = usuarioLog.name;
-
+       
         
 
         nuevoLi.append(postUser);
