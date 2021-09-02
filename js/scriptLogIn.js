@@ -82,6 +82,7 @@ function userRegister()
         localStorage.setItem('usuarios', JSON.stringify(usuarios));
         console.log("susses");
         console.log(usuarios);
+        document.location.href = '/mainred.html'
     }
     else
     {

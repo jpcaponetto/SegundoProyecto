@@ -1,3 +1,7 @@
+.foto{
+    display: flex;
+    flex-direction: column-reverse;
+}
 .foto ul{
     display: flex;
     flex-direction: column;
