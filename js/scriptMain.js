@@ -11,17 +11,28 @@ class Post
     }
 }
 
+
 let usuariosPost = [];
 
-let usuarioLog = JSON.parse(localStorage.getItem('usuarioLog'));
+let usuarioLog;
 
 
-
-if(localStorage.getItem('usuariosPosts'))
+if(localStorage.getItem('usuarioLog'))
 {
-    usuariosPost = JSON.parse(localStorage.getItem('usuariosPosts'));
+  usuarioLog = JSON.parse(localStorage.getItem('usuarioLog'));
+}
+else
+{
+    document.location = 'LogIn.html';
 }
 
+
+if(localStorage.getItem('usuarioPost'))
+{
+    usuariosPost = JSON.parse(localStorage.getItem('usuarioPost'));
+}
+
+window.onload = postsList();
 
 //let imagen = document.getElementById('img').value;
 
@@ -29,7 +40,7 @@ function makePost(){
     let newPost = new Post;
 
     newPost.id = usuariosPost.length;
-    newPost.date = Date.now;
+    newPost.date = Date.now().toString();
     newPost.mediaLink = document.getElementById('imgPost').value;
     newPost.text = document.getElementById('textPost').value;
     newPost.likes = 0;
@@ -51,11 +62,12 @@ function makePost(){
    // userName.append()
    // usuariosFotos.push(imagen)
    
-   if(newPost.text != null && newPost.mediaLink != null)
+   if(newPost.text != "" && newPost.mediaLink != "")
    {
        usuariosPost.push(newPost);
        localStorage.setItem('usuarioPost',JSON.stringify(usuariosPost));
        console.log(usuariosPost);
+       window.location.href ="mainred.html";
    }
    else
    {
@@ -65,25 +77,48 @@ function makePost(){
 
 function postsList()
 {
-    let lista = document.createElement('div');
-    let postsArea = document.createElement('ul');
-    let posts = document.createElement('li');
-    let postContent = document.createElement('div');
-    let postMedia = new Image();
-    let postText = document.createElement('p');
-     
-
-    lista.append(postsArea);
+    //let lista = document.createElement('div');
+    //let postsArea = document.createElement('ul');
+    //let posts = document.createElement('li');
+    //let postContent = document.createElement('div');
+    //let postMedia = new Image();
+    //let postText = document.createElement('p');
+    // 
+//
+    //lista.append(postsArea);
     
     for(var i = 0; i < usuariosPost.length; i++)
     {
-        postText.value = usuariosPost[i].text;
-        postMedia.src = usuariosPost[i].mediaLink;
-        postsArea.append(posts);
-        posts.append(postContent);
-        postContent.append(postText);
-        console.log(usuariosPost[i]);
-        document.write(usuariosPost[i]);
+
+        let nuevoUl = document.createElement('ul');
+        let nuevoLi = document.createElement('li');
+        let postText = document.createElement('p');
+        let postDate = document.createElement('p');
+        let postUser = document.createElement('p');
+        let foto = document.getElementById('foto');
+        
+        let img = new Image;
+
+        img.src = usuariosPost[i].mediaLink;
+        postText = usuariosPost[i].text;
+        postDate = usuariosPost[i].Date;
+        postUser = usuarioLog.name;
+
+
+        nuevoLi.append(postUser);
+        nuevoLi.append(img);
+        nuevoLi.append(postText);
+        nuevoLi.append(postDate);
+        nuevoUl.append(nuevoLi);
+        foto.append(nuevoUl);
+        //console.log(usuariosPost[i].text);
+       // postText.value = usuariosPost[i].text;
+       // postMedia.src = usuariosPost[i].mediaLink;
+       // postsArea.append(postContent);
+       // postContent.append(postMedia);
+       // postContent.append(postText);
+       // console.log(usuariosPost[i]);
+        //document.write(usuariosPost[i]);
     }
 }
     
