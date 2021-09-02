@@ -103,13 +103,6 @@ function validateMail(mail)
 //Login
 
 //Dark theme
-<<<<<<< HEAD
-function switchColor()
-{
-    document.body.classList.toggle("dark");
-}
-=======
->>>>>>> 2ca61961dd386c2bc9fe0b07b12f3f8b2a588a4b
 
 let logIn = document.getElementById("logIn");
 let welcome = document.getElementById("welcome");
