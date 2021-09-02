@@ -36,6 +36,24 @@ window.onload = postsList();
 
 //let imagen = document.getElementById('img').value;
 
+let avatar = document.createElement("div");
+let avatarDiv = document.getElementById("avatarUsuario");
+let linkName = document.createElement("a");
+let profilePic = new Image;
+
+
+
+profilePic.src = usuarioLog.profilePic;
+linkName.href = "userProfile.html";
+linkName.innerText = usuarioLog.name.toString();
+
+avatar.append(linkName);
+avatar.append(profilePic);
+
+avatarDiv.append(avatar);
+
+
+
 function makePost(){
     let newPost = new Post;
 
@@ -84,7 +102,7 @@ function postsList()
     //let postMedia = new Image();
     //let postText = document.createElement('p');
     // 
-//
+   //
     //lista.append(postsArea);
     
     for(var i = 0; i < usuariosPost.length; i++)
