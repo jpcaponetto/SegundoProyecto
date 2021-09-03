@@ -1,0 +1,38 @@
+
+
+
+.userCont
+{
+    background-color: #003049;
+    color: black;
+    text-align: center;
+    font-weight: 800;
+    font-size: xx-large;
+    font-family:sans-serif;
+    padding: 10px;
+}
+.friendList
+{
+    background-color: gray;
+
+}
+.postList
+{
+    background-color: #EAE2B7;
+    list-style-type: none;
+    align-items: center;
+    text-align: center;
+
+}
+.profilePic
+{
+    overflow: hidden;
+    background-color: grey;
+    border-radius: 100px;
+    align-items: center;
+    margin-left: 15px;
+}
+img
+{
+    object-fit: contain;
+}

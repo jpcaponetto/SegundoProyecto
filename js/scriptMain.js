@@ -15,7 +15,7 @@ class Post
 let usuariosPost = [];
 
 let usuarioLog;
-
+let usuarioProfile;
 
 if(localStorage.getItem('usuarioLog'))
 {
@@ -52,6 +52,11 @@ avatar.append(profilePic);
 
 avatarDiv.append(avatar);
 
+if(linkName.click)
+{
+    usuarioProfile = usuarioLog;
+    localStorage.setItem('usuarioProfile', JSON.stringify(usuarioProfile));
+}
 
 
 function makePost(){
