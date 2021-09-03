@@ -1,3 +1,4 @@
+//Clases/////////////////////////////////////////////////////////////////////////
 class User
 {
     constructor(id, firstName, lastName, password, mail, birthDate, phone, friendsList, name, profilePic)
@@ -30,44 +31,50 @@ class Post
         this.date = date;
     }
 }
+//clases/////////////////////////////////////////////////////////
 
+
+// Inicializando variables necesarias para la creacion de ususarios////////////////////////////////
 let defaultProfPic = new Image;
 defaultProfPic.src = "https://www.sogapar.info/wp-content/uploads/2015/12/default-user-image.png";
 let listaAmigos = [];
-// LogIn
 let usuarios = [];
 
 if(localStorage.getItem('usuarios'))
 {
     usuarios = JSON.parse(localStorage.getItem('usuarios'))
 }
+//Inicializando variables necesarias para la creacion de ususarios/////////////////////////////////
 
+//Log In///////////////////////////////////////////////////////////////////////
 function LogIn()
 {
-    
+    //Tomar valores de los form
     usermail = document.getElementById("userMail").value;
     password = document.getElementById("password").value;
    
+    //Encontrar coincidencias en el array de usuarios
     let currentUser = usuarios.find(usuario => usuario.mail == usermail && usuario.password == password);
 
+    //Loguea o no segun el resultado anterior
     if(currentUser)
     {
         console.log("Login Succesfully");
         localStorage.setItem('usuarioLog', JSON.stringify(currentUser));
         document.location="mainred.html";
-        console.log(currentUser);
     }
     else
     {
         console.log("Error, wrong password or username");
-        alert
+        alert("Mail o Contraseña incorrectos!");
     }
-
-
 }
+//Log In///////////////////////////////////////////////////////////////////////
 
+//Registro/////////////////////////////////////////////////////////////////////
 function userRegister()
 {
+    //crea nuevo usuario a partir de 
     let userNew = new User;
     userNew.id = usuarios.length;
     userNew.firstName = document.getElementById("name").value;
@@ -80,7 +87,7 @@ function userRegister()
     userNew.profilePic = defaultProfPic.src;
     userNew.friendsList = listaAmigos;
    
-   
+    //Valida y Guarda el usuario en LocalStorage
     if(userNew.firstName != "" && userNew.password != "" && !validateMail(userNew.mail))
     {
         usuarios.push(userNew);
@@ -130,7 +137,7 @@ function validateMail(mail)
     return valid;
 }
 
-//Login
+//cancela la creacion de un usuario y vuelve a la pantalla de logIn
 function goLogIn()
 {
     if(confirm("¿Regresar a la pagina de inicio?") )
@@ -142,10 +149,10 @@ function goLogIn()
         document.location="register.html";
     }
 }
+//Registro de Usuario//////////////////////////////////////////////////////////////
 
 
-
-//Dark theme
+//Dark theme(fuera de uso pero funciona)//////////////////////////////////////////////////
 
 let logIn = document.getElementById("logIn");
 let welcome = document.getElementById("welcome");
@@ -159,3 +166,4 @@ function switchColor()
     welcome.classList.toggle("dark");
     logFourm.classList.toggle("dark");
 }
+//Dark theme//////////////////////////////////////////////////
