@@ -122,7 +122,7 @@ function postsList()
         postText = usuariosPost[i].text;
         postDate = new Date(usuariosPost[i].date).toLocaleDateString();
         console.log(postDate);
-        postUser = usuarioLog.name;
+        postUser = usuariosPost[i].user.name;
        
         
 
