@@ -52,6 +52,18 @@ avatar.append(profilePic);
 
 avatarDiv.append(avatar);
 
+profilePic.height = 50;
+profilePic.width = 50;
+profilePic.style.padding = "10px";
+
+linkName.style.textDecoration = "none";
+linkName.style.color = "black";
+linkName.style.fontSize = ""
+
+
+
+
+
 if(linkName.click)
 {
     usuarioProfile = usuarioLog;
