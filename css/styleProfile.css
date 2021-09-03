@@ -18,16 +18,15 @@
 }
 .postList
 {
+    display: block;
     background-color: #EAE2B7;
     list-style-type: none;
-    align-items: center;
-    text-align: center;
-
 }
+
 .profilePic
 {
     overflow: hidden;
-    background-color: grey;
+    background-color: rgba(128, 128, 128, 0);
     border-radius: 100px;
     align-items: center;
     margin-left: 15px;
