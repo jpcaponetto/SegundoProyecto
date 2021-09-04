@@ -92,6 +92,7 @@ function userRegister()
     {
         usuarios.push(userNew);
         localStorage.setItem('usuarios', JSON.stringify(usuarios));
+        document.location = "LogIn.html"
         console.log("susses");
         console.log(usuarios);
     }
@@ -99,27 +100,31 @@ function userRegister()
     {
         if(userNew.firstName == "")
         {
-            alert("Por favor, ingresar un nombre.")
+            alert("Por favor, ingresar un nombre.");
         }
         if(userNew.lastName == "")
         {
-            alert("Por favor, ingresar un apellido.")
+            alert("Por favor, ingresar un apellido.");
         }
         if(userNew.firstPassword == "")
         {
-            alert("Por favor, ingresar una contraseña.")
+            alert("Por favor, ingresar una contraseña.");
         }
         if(userNew.mail == "")
         {
-            alert("Por favor, ingresar una direccion de Correo.")
+            alert("Por favor, ingresar una direccion de Correo.");
         }
         if(userNew.phone == "")
         {
-            alert("Por favor, ingresar un numero de telefono.")
+            alert("Por favor, ingresar un numero de telefono.");
         }
         if(userNew.firstName == "")
         {
-            alert("Por favor, ingresar una fecha de nacimiento.")
+            alert("Por favor, ingresar una fecha de nacimiento.");
+        }
+        if(validateMail(userNew.mail))
+        {
+            alert("Ya hay una cuenta registrada con esa direccion");
         }
 
 
@@ -134,6 +139,7 @@ function validateMail(mail)
 {
     const valid = usuarios.find(usuario => usuario.mail == mail)
 
+    
     return valid;
 }
 

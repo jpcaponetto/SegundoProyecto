@@ -18,27 +18,48 @@
     
         <div class="row justify-content-center">
             <div class="col-9 contenedorEnvioImg" id="agregadoFoto">
-                <label for="imgPost">Publica una imagen directamente con un URL</label>
-                <input id="imgPost" class="form-control" type="text" placeholder="URL">  
-                <br>
-                <label for="textPost">Escribe una publicacion</label>
-                <textarea id="textPost" class="form-control" type="text" placeholder="que estas pensando..." ></textarea>
-                <br>
-                <button onclick="makePost()" id="enviarimg" class="btn btn-success">Subir</button>
-                
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#publicar">
+                    Nueva Publicacion
+                  </button> 
+                  <div class="modal fade" id="publicar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Nueva Publicacion</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <label for="imgPost">Publica una imagen directamente con un URL</label>
+                            <input id="imgPost" class="form-control" type="text" placeholder="URL">  
+                            <br>
+                            <label for="textPost">Escribe una publicacion</label>
+                            <textarea id="textPost" class="form-control" type="text" placeholder="que estas pensando..." ></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button onclick="makePost()" id="enviarimg" class="btn btn-success">Subir</button>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                      
             </div>
             <div class="col-3 avatar" id="avatarUsuario">
     
             </div>
         </div>
-       
-    <div class=" foto" id="contenedorImg">
-        <div class="nombreUsuario" id="nombreUsuario">
-
-        </div>
-        <div class="foto" id="foto">
+       <div class="row justify-content-start publiList" >
+        <div class="col-9 foto" id="contenedorImg">
            
-        </div>
+           
+        </div>    
+        <div class="col-3 friendList" id="friendList" >
+            <p>sadsadasdsad</p>
+            </div>
+     
+       </div>
+       
+        
     </div> 
     </main>
     <script src="js/scriptMain.js"></script>

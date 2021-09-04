@@ -130,25 +130,55 @@ function postsList()
         let postText = document.createElement('p');
         let postDate = document.createElement('p');
         let postUser = document.createElement('p');
-        let foto = document.getElementById('foto');
-        
+        let foto = document.getElementById('contenedorImg');
+        let userDiv = document.createElement('div');
+        let userpic = new Image;
 
         let img = new Image;
 
         img.src = usuariosPost[i].mediaLink;
-        postText = usuariosPost[i].text;
-        postDate = new Date(usuariosPost[i].date).toLocaleDateString();
+        postText.innerText = usuariosPost[i].text;
+        postDate.innerText = new Date(usuariosPost[i].date).toLocaleDateString();
         console.log(postDate);
-        postUser = usuariosPost[i].user.name;
+        postUser.innerText = usuariosPost[i].user.name;
+        userpic.src = usuariosPost[i].user.profilePic;
        
         
+        userpic.width = 50;
+        userpic.height = 50;
 
-        nuevoLi.append(postUser);
+        userpic.style.height = "50px";
+        userpic.style.width = "50px";
+
+        userDiv.style.display = "inline-flex";
+        userDiv.style.textAlign = "center";
+        userDiv.style.marginTop = "0px";
+
+        postUser.style.paddingTop = "10px";
+        postUser.style.paddingLeft = "10px";
+
+        postText.style.marginTop = "10px";
+        postText.style.marginBottom = "20px";
+        postText.style.padding = "20px"
+        postText.style.backgroundColor = "#f3edc9"
+
+        foto.height = 400;
+        foto.width = 600;
+        foto.style.marginTop = "20px";
+        foto.style.paddingBottom = "10px";
+        foto.style.paddingTop = "10px";
+        foto.style.backgroundColor = "#f3edc9"; 
+
+        nuevoLi.style.listStyle = "none";
+        
+        userDiv.append(userpic, postUser);
+        nuevoLi.append(userDiv);
         nuevoLi.append(img);
         nuevoLi.append(postText);
         nuevoLi.append(postDate);
         nuevoUl.append(nuevoLi);
         foto.append(nuevoUl);
+
         //console.log(usuariosPost[i].text);
        // postText.value = usuariosPost[i].text;
        // postMedia.src = usuariosPost[i].mediaLink;

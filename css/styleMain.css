@@ -1,25 +1,24 @@
-body
-{
-   overflow-x:hidden;
-}
 
+.publiList
+{
+    padding-left: 0px;
+}
 .foto ul{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
+    
 }
 .foto ul li img{
     width: 500px;
     height: 500px;
 }
-.foto ul li{
-    list-style: none;
-    padding: 3rem 0;
-    margin: 1rem 0;
-    border: 1px solid grey;
-    border-radius: 20px;
+.foto ul{
+    display: block;
+    background-color: #EAE2B7;
+    list-style-type: none;
 }
 .avatar
 {
@@ -30,8 +29,10 @@ body
 .contenedorEnvioImg
 {
     background-color: #EAE2B7;
-    padding-top: 10px;
     padding-left: 30px;
-    padding-bottom: 10px;
     text-align: start;
+}
+.friendList
+{
+    background-color: aqua;
 }

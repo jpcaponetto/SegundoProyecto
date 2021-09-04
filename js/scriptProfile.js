@@ -106,6 +106,8 @@ if(userPosts.length !== 0)
          //da estilos a la publicaion especifica///////////////////
          item.style.listStyle = "none";
          item.style.textAlign = "start"; 
+         item.style.borderTop = "solid 5px black"
+
          
          //da estilos al texto de la publicacion////////////////////
          postText.classList.toggle("col-12");
@@ -118,7 +120,6 @@ if(userPosts.length !== 0)
          userdiv.style.display = "inline-flex";
          userdiv.style.textAlign = "center";
          userdiv.style.marginTop = "20px";
-        
          
          //carga todo lo anterior en userProfile.html///////////////////
          userdiv.append(userPic);
