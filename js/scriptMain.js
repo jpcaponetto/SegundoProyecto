@@ -11,7 +11,6 @@ class Post
     }
 }
 
-
 let usuariosPost = [];
 
 let usuarioLog;
@@ -33,8 +32,7 @@ if(localStorage.getItem('usuarioPost'))
 }
 
 window.onload = postsList();
-
-//let imagen = document.getElementById('img').value;
+window.onload = sugestUsers();
 
 let avatar = document.createElement("div");
 let avatarDiv = document.getElementById("avatarUsuario");
@@ -80,22 +78,6 @@ function makePost(){
     newPost.text = document.getElementById('textPost').value;
     newPost.likes = [];
     newPost.user = usuarioLog;
-
-    //let imagen = document.getElementById('img').value;
-   // let img = new Image();
-   // img.src = newPost.mediaLink;
-   // let userName = usuarioLog.userName;
-   // let foto = document.getElementById('foto');
-   // document.write('textPost');
-   // let nuevoUl = document.createElement('ul');
-   // let nuevoLi = document.createElement('li');
-   // 
-   // 
-   // nuevoLi.append(img);
-   // nuevoUl.append(nuevoLi);
-   // foto.append(nuevoUl);
-   // userName.append()
-   // usuariosFotos.push(imagen)
    
    if(newPost.text != "" && newPost.mediaLink != "")
    {
@@ -112,15 +94,7 @@ function makePost(){
 
 function postsList()
 {
-    //let lista = document.createElement('div');
-    //let postsArea = document.createElement('ul');
-    //let posts = document.createElement('li');
-    //let postContent = document.createElement('div');
-    //let postMedia = new Image();
-    //let postText = document.createElement('p');
-    // 
-   //
-    //lista.append(postsArea);
+    usuariosPost = usuariosPost.reverse();
     
     for(var i = 0; i < usuariosPost.length; i++)
     {
@@ -149,7 +123,9 @@ function postsList()
 
         userpic.style.height = "50px";
         userpic.style.width = "50px";
-
+        userpic.style.borderRadius = "25px";
+        
+        userDiv.classList.toggle("card-header")
         userDiv.style.display = "inline-flex";
         userDiv.style.textAlign = "center";
         userDiv.style.marginTop = "0px";
@@ -157,19 +133,26 @@ function postsList()
         postUser.style.paddingTop = "10px";
         postUser.style.paddingLeft = "10px";
 
+        postText.classList.toggle("card-text")
         postText.style.marginTop = "10px";
         postText.style.marginBottom = "20px";
-        postText.style.padding = "20px"
-        postText.style.backgroundColor = "#f3edc9"
+        postText.style.padding = "20px";
+        postText.style.backgroundColor = "whitesmoke";
 
-        foto.height = 400;
-        foto.width = 600;
+        img.height = 500;
+        img.width = 600;
+      
+
+        foto.classList.toggle("card-img-top")
         foto.style.marginTop = "20px";
         foto.style.paddingBottom = "10px";
         foto.style.paddingTop = "10px";
-        foto.style.backgroundColor = "#f3edc9"; 
 
         nuevoLi.style.listStyle = "none";
+        nuevoLi.classList.toggle("card");
+        nuevoLi.style.maxWidth = "fit-content";
+        nuevoLi.style.minWidth = "fit-content";
+
         
         userDiv.append(userpic, postUser);
         nuevoLi.append(userDiv);
@@ -179,16 +162,49 @@ function postsList()
         nuevoUl.append(nuevoLi);
         foto.append(nuevoUl);
 
-        //console.log(usuariosPost[i].text);
-       // postText.value = usuariosPost[i].text;
-       // postMedia.src = usuariosPost[i].mediaLink;
-       // postsArea.append(postContent);
-       // postContent.append(postMedia);
-       // postContent.append(postText);
-       // console.log(usuariosPost[i]);
-        //document.write(usuariosPost[i]);
+        
     }
 }
     
+function sugestUsers()
+{
+    let allUsers = JSON.parse(localStorage.getItem('usuarios'));
+     
+    let userList  = allUsers.filter(users => users.id != usuarioLog.id);
 
+    for(var i = 0; i < userList.length; i++)
+    {
+        let users = document.getElementById("friendList");
+        let usersUL = document.createElement('ul');
+        let usersLI = document.createElement('li');
+        let userName = document.createElement('a');
+        let userDiv = document.createElement('div');
+        let userPic = new Image;
+           
+        let usuarioProf = userList[i];
+        userName.innerText = userList[i].name;
+        userName.style.textDecoration = "none";
+        userName.style.color = "black";
+        userName.onclick = function()
+        {
+            console.log(usuarioProf);
+            
+            localStorage.setItem('usuarioProfile', JSON.stringify(usuarioProf));
+
+            document.location = "userProfile.html"
+        }
+        userName.style.paddingLeft = "5px";
+       
+        userPic.src = userList[i].profilePic;
+        userPic.style.borderRadius = "25px";
+        userPic.width = 50;
+        userPic.height = 50;
+
+        userDiv.append(userPic);
+        userDiv.append(userName);
+        usersLI.append(userDiv);
+        usersUL.append(usersLI);
+        users.append(usersUL);
+    }
+}
    

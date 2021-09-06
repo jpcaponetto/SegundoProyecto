@@ -1,3 +1,4 @@
+
 body
 {
     overflow-x: hidden;
@@ -24,6 +25,7 @@ body
 
 .welcome
 {
+    font-family: 'Kaisei Tokumin', serif; 
     transition:1s ease all;
     text-align: center;
     background-color: #EAE2B7;
@@ -40,12 +42,13 @@ body
 
 .logFourm
 {
+    font-family: 'Kaisei Tokumin', serif; 
     margin: 20px;
     transition:1s ease all;
     border: solid rgba(0, 0, 0, 0.356) 2px;
     padding: 50px;
     border-radius: 25px;
-    background-color:#f3edc9;
+    background-color:whitesmoke;
     color: black;
 }
 .logFourm.dark
