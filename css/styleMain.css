@@ -1,0 +1,38 @@
+
+.publiList
+{
+    padding-left: 0px;
+}
+.foto ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    
+}
+.foto ul li img{
+    width: 500px;
+    height: 500px;
+}
+.foto ul{
+    display: block;
+    background-color: #EAE2B7;
+    list-style-type: none;
+}
+.avatar
+{
+    background-color: #EAE2B7;
+    text-align: end;
+    font-size: xx-large;
+}
+.contenedorEnvioImg
+{
+    background-color: #EAE2B7;
+    padding-left: 30px;
+    text-align: start;
+}
+.friendList
+{
+    background-color: aqua;
+}
