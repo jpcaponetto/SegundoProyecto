@@ -72,6 +72,7 @@ if(userPosts.length !== 0)
          let postUser = document.createElement("h1");
          let postDate = document.createElement("h6");
          let postLikes = document.createElement("h6");
+         let buttonLike = document.createElement("input");
          let postPic = new Image;
          let userPic = new Image;
          
@@ -80,7 +81,7 @@ if(userPosts.length !== 0)
          postPic.src = userPosts[i].mediaLink;
          postUser.innerText = userPosts[i].user.name;
          userPic.src = userPosts[i].user.profilePic;
-         postLikes.innerText =  userPosts[i].likes + "Likes ";
+         postLikes.innerText =  userPosts[i].likes.length + "Likes ";
          postDate.innerText = "Publicado el " + new Date(userPosts[i].date).toLocaleDateString();
          
 
@@ -95,31 +96,81 @@ if(userPosts.length !== 0)
          userPic.style.marginTop = "0px";
                    
          //da estilos a la imagen de la publicacion////////////////////
-         postPic.classList.toggle("col-12");
+         postPic.classList.toggle("card-img.top");
          postPic.height = 400;
          postPic.width = 600;
          postPic.style.marginTop = "20px";
          postPic.style.paddingBottom = "10px";
          postPic.style.paddingTop = "10px";
-         postPic.style.backgroundColor = "#f3edc9";
          
          //da estilos a la publicaion especifica///////////////////
+         item.classList.toggle("card");
+         item.style.width = 10;
          item.style.listStyle = "none";
          item.style.textAlign = "start"; 
          item.style.borderTop = "solid 5px black"
 
          
          //da estilos al texto de la publicacion////////////////////
-         postText.classList.toggle("col-12");
+         postText.classList.toggle("card-text");
          postText.style.marginTop = "10px";
          postText.style.marginBottom = "20px";
          postText.style.padding = "20px"
-         postText.style.backgroundColor = "#f3edc9"
 
          //da estilos al div que contiene foto y nombre del usuario//////////////////////////
+         userdiv.classList.toggle("card-header")
          userdiv.style.display = "inline-flex";
          userdiv.style.textAlign = "center";
          userdiv.style.marginTop = "20px";
+
+         postLikes.classList.toggle("card-list-item");
+         postDate.classList.toggle("card-list-item");
+
+         buttonLike.classList.toggle("btn");
+         buttonLike.classList.toggle("btn-primary");
+         buttonLike.value = "Like";
+         
+        let currentpost = userPosts[i];
+
+     buttonLike.onclick = function() 
+     {
+
+        //likeDislike(userPosts[i]);
+
+         let usuarioLog;
+
+      if(localStorage.getItem('usuarioLog'))
+      {
+       usuarioLog = JSON.parse(localStorage.getItem('usuarioLog'));
+      }
+      else 
+      {
+       document.location = 'LogIn.html';
+      }
+
+    
+        let validate = currentpost.likes.filter(like => like == usuarioLog.mail);
+
+        console.log(validate);
+
+        if(validate != usuarioLog.mail)
+        {
+         currentpost.likes.push(usuarioLog.mail);
+         localStorage.setItem('usuarioPost',JSON.stringify(allPosts));
+         document.location = "userProfile.html";
+        }
+        if(validate == usuarioLog.mail)
+        {
+         currentpost.likes.splice(validate);
+         localStorage.setItem('usuarioPost',JSON.stringify(allPosts));
+         document.location = "userProfile.html";
+
+        }
+        
+    }
+
+        
+         
          
          //carga todo lo anterior en userProfile.html///////////////////
          userdiv.append(userPic);
@@ -129,9 +180,9 @@ if(userPosts.length !== 0)
          item.append(postText);
          item.append(postLikes);
          item.append(postDate);
+         item.append(buttonLike);
          list.append(item);
          postList.append(list);
-
     }
 }
 //si no encuentra//////////////////////////////////////////////////
@@ -143,4 +194,47 @@ else
 }
 //Poblar parte Publicaciones/////////////////////////////////////////////////////////////
 
+
+
+
+
+
+function likeDislike(thisPost)
+{
+    let usuarioLog;
+
+    if(localStorage.getItem('usuarioLog'))
+    {
+      usuarioLog = JSON.parse(localStorage.getItem('usuarioLog'));
+    }
+    else 
+    {
+      document.location = 'LogIn.html';
+    }
+
+    let currentpost = allPosts.find(post => post == thisPost);
+    
+    let validate = currentpost.likes.find(like => like == usuarioLog.mail);
+
+    console.log(validate);
+
+    if(!validate)
+    {
+        currentpost.likes.push(usuarioLog.mail);
+        localStorage.setItem('usuarioPost',JSON.stringify(allPosts));
+        //document.location = "userProfile.html";
+    }
+    if(validate == usuarioLog.mail)
+    {
+        currentpost.likes.splice(validate);
+        localStorage.setItem('usuarioPost',JSON.stringify(allPosts));
+        //document.location = "userProfile.html";
+
+    }
+}
+
+
+
+
+//poblar parte lista de amigos///////////////////////////////////////////////////////////
 //poblar parte lista de amigos///////////////////////////////////////////////////////////

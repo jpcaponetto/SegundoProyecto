@@ -78,7 +78,7 @@ function makePost(){
     newPost.date = Date();
     newPost.mediaLink = document.getElementById('imgPost').value;
     newPost.text = document.getElementById('textPost').value;
-    newPost.likes = 0;
+    newPost.likes = [];
     newPost.user = usuarioLog;
 
     //let imagen = document.getElementById('img').value;
