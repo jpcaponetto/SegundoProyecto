@@ -13,7 +13,7 @@ class Post
 
 let usuariosPost = [];
 
-let usuarioLog;
+let usuarioLog ;
 let usuarioProfile;
 
 if(localStorage.getItem('usuarioLog'))
@@ -168,10 +168,17 @@ function postsList()
     
 function sugestUsers()
 {
+
     let allUsers = JSON.parse(localStorage.getItem('usuarios'));
      
-    let userList  = allUsers.filter(users => users.id != usuarioLog.id);
+    let friendList = usuarioLog.friendsList;
 
+    let userList  = allUsers.filter(users => users.id != usuarioLog.id && !friendList.includes(users.mail));
+    
+    console.log(userList);
+    console.log(usuarioLog.friendsList);
+
+     
     for(var i = 0; i < userList.length; i++)
     {
         let users = document.getElementById("friendList");
@@ -179,6 +186,7 @@ function sugestUsers()
         let usersLI = document.createElement('li');
         let userName = document.createElement('a');
         let userDiv = document.createElement('div');
+        let friendButton = document.createElement('button');
         let userPic = new Image;
            
         let usuarioProf = userList[i];
@@ -195,6 +203,41 @@ function sugestUsers()
         }
         userName.style.paddingLeft = "5px";
        
+        let newFriend = userList[i];
+        friendButton.classList.toggle("btn");
+        friendButton.classList.toggle("btn-primary");
+        friendButton.innerText = "Seguir"
+        friendButton.style.marginLeft = "10px"
+        friendButton.onclick = function()
+        {
+            console.log(newFriend);
+           
+            if(!friendList.includes(newFriend.id))
+            {
+              friendList.push(newFriend.mail);
+            }
+            else
+            {
+                alert("omaewa mo shindeiru");
+                friendButton.disabled = true;
+            }
+
+            usuarioLog.friendsList = friendList;
+
+            console.log(usuarioLog.friendsList);
+
+            allUsers.splice(usuarioLog.id, 1, usuarioLog);
+
+            localStorage.setItem('usuarios', JSON.stringify(allUsers));
+
+            localStorage.setItem('usuarioLog', JSON.stringify(usuarioLog));
+
+            document.location = "mainred.html"
+
+            console.log(allUsers);
+
+        }
+
         userPic.src = userList[i].profilePic;
         userPic.style.borderRadius = "25px";
         userPic.width = 50;
@@ -202,6 +245,7 @@ function sugestUsers()
 
         userDiv.append(userPic);
         userDiv.append(userName);
+        userDiv.append(friendButton);
         usersLI.append(userDiv);
         usersUL.append(usersLI);
         users.append(usersUL);

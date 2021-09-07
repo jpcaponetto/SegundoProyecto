@@ -88,7 +88,7 @@ function userRegister()
     userNew.friendsList = listaAmigos;
    
     //Valida y Guarda el usuario en LocalStorage
-    if(userNew.firstName != "" && userNew.password != "" && !validateMail(userNew.mail))
+    if(userNew.firstName != "" || userNew.password != "" || !validateMail(userNew.mail))
     {
         usuarios.push(userNew);
         localStorage.setItem('usuarios', JSON.stringify(usuarios));
@@ -106,7 +106,7 @@ function userRegister()
         {
             alert("Por favor, ingresar un apellido.");
         }
-        if(userNew.firstPassword == "")
+        if(userNew.password == "")
         {
             alert("Por favor, ingresar una contraseña.");
         }
@@ -118,7 +118,7 @@ function userRegister()
         {
             alert("Por favor, ingresar un numero de telefono.");
         }
-        if(userNew.firstName == "")
+        if(userNew.birthDate == undefined)
         {
             alert("Por favor, ingresar una fecha de nacimiento.");
         }
