@@ -218,7 +218,6 @@ function sugestUsers()
             }
             else
             {
-                alert("omaewa mo shindeiru");
                 friendButton.disabled = true;
             }
 
