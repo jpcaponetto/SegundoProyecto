@@ -37,7 +37,7 @@ if(localStorage.getItem('usuarioPost'))
 
 usuariosPost = allPosts.filter(post => post.user.id == usuarioLog.id || usuarioLog.friendsList.includes(post.user.mail));
 
-usuariosPost = usuariosPost.reverse();
+usuariosPost;
 
 window.onload = postsList();
 window.onload = sugestUsers();
@@ -188,22 +188,24 @@ function postsList()
            }
 
    
-           let validate = currentpost.likes.filter(like => like == usuarioLog.mail); 
+           let validate = currentpost.likes.find(like => like == usuarioLog.mail); 
 
            console.log(validate);
        
-           if(validate != usuarioLog.mail)
+           if(!validate)
            {
-            currentpost.likes.push(usuarioLog.mail);
-            localStorage.setItem('usuarioPost',JSON.stringify(usuariosPost));
-            document.location = "mainred.html";
+              currentpost.likes.push(usuarioLog.mail);
+              localStorage.setItem('usuarioPost',JSON.stringify(usuariosPost));
+               document.location = "mainred.html";
+               console.log(currentpost.likes);
            }
-           if(validate == usuarioLog.mail)
+           if(validate)
            {
-            currentpost.likes.splice(validate);
-            localStorage.setItem('usuarioPost',JSON.stringify(usuariosPost));
-            document.location = "mainred.html";
-       
+              currentpost.likes.splice(currentpost.likes.findIndex(x => x === usuarioLog.mail), 1);
+              localStorage.setItem('usuarioPost',JSON.stringify(usuariosPost));
+              document.location = "mainred.html";
+              console.log(currentpost.likes);
+ 
            }
        
         }
