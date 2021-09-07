@@ -72,7 +72,7 @@ if(userPosts.length !== 0)
          let postUser = document.createElement("h1");
          let postDate = document.createElement("h6");
          let postLikes = document.createElement("h6");
-         let buttonLike = document.createElement("input");
+         let buttonLike = document.createElement("button");
          let postPic = new Image;
          let userPic = new Image;
          
@@ -129,6 +129,7 @@ if(userPosts.length !== 0)
          buttonLike.classList.toggle("btn");
          buttonLike.classList.toggle("btn-primary");
          buttonLike.value = "Like";
+         buttonLike.innerText = "Like";
          
         let currentpost = userPosts[i];
 

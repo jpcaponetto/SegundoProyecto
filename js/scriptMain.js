@@ -16,7 +16,7 @@ class Post
 
 
 let usuariosPost = [];
-
+let allPosts = [];
 let usuarioLog ;
 let usuarioProfile;
 
@@ -32,8 +32,12 @@ else
 
 if(localStorage.getItem('usuarioPost'))
 {
-    usuariosPost = JSON.parse(localStorage.getItem('usuarioPost'));
+    allPosts = JSON.parse(localStorage.getItem('usuarioPost'));
 }
+
+usuariosPost = allPosts.filter(post => post.user.id == usuarioLog.id || usuarioLog.friendsList.includes(post.user.mail));
+
+usuariosPost = usuariosPost.reverse();
 
 window.onload = postsList();
 window.onload = sugestUsers();
@@ -97,7 +101,6 @@ function makePost(){
 //funcion que muestra las publicaciones////////////
 function postsList()
 {
-    usuariosPost = usuariosPost.reverse();
     
     for(var i = 0; i < usuariosPost.length; i++)
     {
@@ -109,13 +112,16 @@ function postsList()
         let postUser = document.createElement('p');
         let foto = document.getElementById('contenedorImg');
         let userDiv = document.createElement('div');
+        let postLikes = document.createElement("h6");
+        let buttonLike = document.createElement("button");
         let userpic = new Image;
 
         let img = new Image;
 
         img.src = usuariosPost[i].mediaLink;
         postText.innerText = usuariosPost[i].text;
-        postDate.innerText = new Date(usuariosPost[i].date).toLocaleDateString();
+        postLikes.innerText =  usuariosPost[i].likes.length + "Likes ";
+        postDate.innerText = "Publicado el " + new Date(usuariosPost[i].date).toLocaleDateString();
         console.log(postDate);
         postUser.innerText = usuariosPost[i].user.name;
         userpic.src = usuariosPost[i].user.profilePic;
@@ -156,12 +162,60 @@ function postsList()
         nuevoLi.style.maxWidth = "fit-content";
         nuevoLi.style.minWidth = "fit-content";
 
+        postLikes.classList.toggle("card-list-item");
+        postDate.classList.toggle("card-list-item");
+
+        buttonLike.classList.toggle("btn");
+        buttonLike.classList.toggle("btn-primary");
+        buttonLike.value = "Like";
+        buttonLike.innerText = "Like";
+        
+       let currentpost = usuariosPost[i];
+
+       buttonLike.onclick = function() 
+        { 
+
+
+          let usuarioLog;
+
+          if(localStorage.getItem('usuarioLog'))
+           {
+             usuarioLog = JSON.parse(localStorage.getItem('usuarioLog'));
+            }
+           else 
+           {
+             document.location = 'LogIn.html';
+           }
+
+   
+           let validate = currentpost.likes.filter(like => like == usuarioLog.mail); 
+
+           console.log(validate);
+       
+           if(validate != usuarioLog.mail)
+           {
+            currentpost.likes.push(usuarioLog.mail);
+            localStorage.setItem('usuarioPost',JSON.stringify(usuariosPost));
+            document.location = "mainred.html";
+           }
+           if(validate == usuarioLog.mail)
+           {
+            currentpost.likes.splice(validate);
+            localStorage.setItem('usuarioPost',JSON.stringify(usuariosPost));
+            document.location = "mainred.html";
+       
+           }
+       
+        }
+
         
         userDiv.append(userpic, postUser);
         nuevoLi.append(userDiv);
         nuevoLi.append(img);
         nuevoLi.append(postText);
+        nuevoLi.append(postLikes);
         nuevoLi.append(postDate);
+        nuevoLi.append(buttonLike)
         nuevoUl.append(nuevoLi);
         foto.append(nuevoUl);
 
@@ -223,7 +277,6 @@ function sugestUsers()
             }
             else
             {
-                friendButton.disabled = true;
             }
 
             usuarioLog.friendsList = friendList;
