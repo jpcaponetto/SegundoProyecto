@@ -36,8 +36,8 @@ if(localStorage.getItem('usuarioPost'))
 }
 
 usuariosPost = allPosts.filter(post => post.user.id == usuarioLog.id || usuarioLog.friendsList.includes(post.user.mail));
+usuariosPost = usuariosPost.reverse();
 
-usuariosPost;
 
 window.onload = postsList();
 window.onload = sugestUsers();
@@ -101,6 +101,7 @@ function makePost(){
 //funcion que muestra las publicaciones////////////
 function postsList()
 {
+
     
     for(var i = 0; i < usuariosPost.length; i++)
     {
@@ -191,7 +192,10 @@ function postsList()
            let validate = currentpost.likes.find(like => like == usuarioLog.mail); 
 
            console.log(validate);
-       
+ 
+
+           usuariosPost = usuariosPost.reverse();
+           
            if(!validate)
            {
               currentpost.likes.push(usuarioLog.mail);
@@ -205,7 +209,6 @@ function postsList()
               localStorage.setItem('usuarioPost',JSON.stringify(usuariosPost));
               document.location = "mainred.html";
               console.log(currentpost.likes);
- 
            }
        
         }
