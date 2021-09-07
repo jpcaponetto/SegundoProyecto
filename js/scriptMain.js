@@ -1,3 +1,4 @@
+///creando la clase para Publicaciones///////////////////////////////////
 class Post
 {
     constructor(id, user, text, mediaLink, likes, date)
@@ -10,6 +11,9 @@ class Post
         this.date = date;
     }
 }
+///creando la clase para Publicaciones///////////////////////////////////
+
+
 
 let usuariosPost = [];
 
@@ -34,11 +38,11 @@ if(localStorage.getItem('usuarioPost'))
 window.onload = postsList();
 window.onload = sugestUsers();
 
+///poblando div del ususario/////////////////////////
 let avatar = document.createElement("div");
 let avatarDiv = document.getElementById("avatarUsuario");
 let linkName = document.createElement("a");
 let profilePic = new Image;
-
 
 
 profilePic.src = usuarioLog.profilePic;
@@ -58,17 +62,14 @@ linkName.style.textDecoration = "none";
 linkName.style.color = "black";
 linkName.style.fontSize = ""
 
-
-
-
-
 if(linkName.click)
 {
     usuarioProfile = usuarioLog;
     localStorage.setItem('usuarioProfile', JSON.stringify(usuarioProfile));
 }
+///poblando div del ususario/////////////////////////
 
-
+//funcion del boton de nueva publicacion////////
 function makePost(){
     let newPost = new Post;
 
@@ -91,7 +92,9 @@ function makePost(){
        console.log("error");
    }
 }
+//funcion del boton de nueva publicacion////////
 
+//funcion que muestra las publicaciones////////////
 function postsList()
 {
     usuariosPost = usuariosPost.reverse();
@@ -165,7 +168,9 @@ function postsList()
         
     }
 }
-    
+//funcion que muestra las publicaciones////////////
+
+//funcion que muestra las sugerencias de amistad/////////////////    
 function sugestUsers()
 {
 
@@ -250,4 +255,5 @@ function sugestUsers()
         users.append(usersUL);
     }
 }
-   
+//funcion que muestra las sugerencias de amistad/////////////////    
+  
