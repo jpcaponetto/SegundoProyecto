@@ -86,6 +86,14 @@ function userRegister()
     userNew.birthDate = document.getElementById("birthdate").value;
     userNew.profilePic = defaultProfPic.src;
     userNew.friendsList = listaAmigos;
+    if(userNew.mail == "admin" && userNew.password == "admin")
+    {
+        userNew.isAdmin = true;
+    }
+    else
+    {
+        userNew.isAdmin = false;
+    }
    
     //Valida y Guarda el usuario en LocalStorage
     if(userNew.firstName != "" || userNew.password != "" || !validateMail(userNew.mail))
