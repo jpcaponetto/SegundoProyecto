@@ -1,0 +1,18 @@
+.divheader.dark
+{
+    align-content: center;
+    transition:1s ease all;
+    background-color: black;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+
+.divheader 
+{
+    font-family: 'Kaisei Tokumin', serif; 
+    transition:1s ease all;
+    text-align: center;
+    background-color: #EAE2B7;
+    color: black;
+}

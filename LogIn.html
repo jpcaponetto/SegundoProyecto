@@ -4,6 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styleLogIn.css"></link>
+    <link rel="stylesheet" href="css/StyleHeader.css"></link>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin&display=swap" rel="stylesheet"> 
@@ -13,9 +14,21 @@
     <title>Segundo Proyecto</title>
 </head>
 <main>
-    <header>
-        
-    </header>
+  <!-- INICIO DE HEADER  -->
+  <header>
+    <div class="row  divheader" > 
+        <div class="col-sm-12 col-md-4 ">
+           <a href="#PONERLINKDEUSUARIO"> codeANDO </a> <!-- Falta link de usuario-->
+           </div>
+        <div class="col-sm-12 col-md-4 ">  
+        </div>
+        <div class="col-sm-12 col-md-4 ">
+            <i class="fas fa-lightbulb" onclick="switchColor()"></i>
+        </div>
+   </div> 
+</header>
+
+<!-- Fin del header , INICIO DEL MAIN -->
     <body>
      <div id="logIn" class="row logIn justify-content-center">
          <div id="welcome" class="col-md-12 col-lg-8 welcome">
@@ -46,6 +59,7 @@
           <script src="js/scriptLogIn.js" ></script>
      </div>
     </body>
+    <script src="https://kit.fontawesome.com/bd6ce91836.js" crossorigin="anonymous"></script>
     <footer>
 
     </footer>
