@@ -1,25 +1,31 @@
-
-
-
 .userCont
 {
-    background-color: #003049;
+    background-color: #EAE2B7;
     color: black;
     text-align: center;
     font-weight: 800;
     font-size: xx-large;
     font-family:sans-serif;
     padding: 10px;
+    position: fixed;
+    top: 0;
+    z-index: 10;
 }
 .friendList
-{
-    background-color: gray;
-
+{   margin-top: 100px;
+    background-color: #d6cfa8;
+    min-height: 500px;
+    max-height: fit-content;
+    position: fixed;
+    left: 0;
+    padding-right: 200px;
 }
 .postList
 {
-    display: block;
+    display: inline;
     list-style-type: none;
+    padding-left: 1000px;
+   align-content: center;
 }
 
 .profilePic
@@ -34,3 +40,4 @@ img
 {
     object-fit: contain;
 }
+

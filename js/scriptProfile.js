@@ -72,7 +72,7 @@ if(userPosts.length !== 0)
          let postUser = document.createElement("h1");
          let postDate = document.createElement("h6");
          let postLikes = document.createElement("h6");
-         let buttonLike = document.createElement("input");
+         let buttonLike = document.createElement("button");
          let postPic = new Image;
          let userPic = new Image;
          
@@ -84,6 +84,8 @@ if(userPosts.length !== 0)
          postLikes.innerText =  userPosts[i].likes.length + "Likes ";
          postDate.innerText = "Publicado el " + new Date(userPosts[i].date).toLocaleDateString();
          
+         
+         postText.style.backgroundColor = "whitesmoke";
 
          //da estilos al nombre del usuario/////////////////
          postUser.style.marginTop = "0px";
@@ -97,20 +99,25 @@ if(userPosts.length !== 0)
                    
          //da estilos a la imagen de la publicacion////////////////////
          postPic.classList.toggle("card-img.top");
-         postPic.height = 400;
-         postPic.width = 600;
-         postPic.style.marginTop = "20px";
-         postPic.style.paddingBottom = "10px";
-         postPic.style.paddingTop = "10px";
+         postPic.style.height = "400px";
+         postPic.style.width = "500px";
+         postPic.style.marginTop = "0px";
+         postPic.style.paddingBottom = "0px";
+         postPic.style.paddingTop = "0px";
          
          //da estilos a la publicaion especifica///////////////////
          item.classList.toggle("card");
          item.style.width = 10;
          item.style.listStyle = "none";
          item.style.textAlign = "start"; 
-         item.style.borderTop = "solid 5px black"
+         item.style.maxHeight = "fit-content";
+         item.style.maxWidth = "fit-content";
+         item.style.minHeight = "fit-content";
+         item.style.minWidth = "fit-content";
+         item.style.marginLeft = "400px";
 
-         
+         list.style.alignItems = "end";
+         list.style.paddingLeft = "200px";        
          //da estilos al texto de la publicacion////////////////////
          postText.classList.toggle("card-text");
          postText.style.marginTop = "10px";
@@ -121,56 +128,54 @@ if(userPosts.length !== 0)
          userdiv.classList.toggle("card-header")
          userdiv.style.display = "inline-flex";
          userdiv.style.textAlign = "center";
-         userdiv.style.marginTop = "20px";
-
+         userdiv.style.marginTop = "0px";
+         
+         //da estilos a la fecha y los likes//////////////////////////
          postLikes.classList.toggle("card-list-item");
          postDate.classList.toggle("card-list-item");
+         
 
+         //da estilos al boton de like//////////////////////////
          buttonLike.classList.toggle("btn");
          buttonLike.classList.toggle("btn-primary");
          buttonLike.value = "Like";
+         buttonLike.innerText = "Like";
          
-        let currentpost = userPosts[i];
+         let currentpost = userPosts[i];
+         //funcion de dar like//////////////////////////////////
+        buttonLike.onclick = function() {
 
-     buttonLike.onclick = function() 
-     {
-
-        //likeDislike(userPosts[i]);
-
-         let usuarioLog;
-
-      if(localStorage.getItem('usuarioLog'))
-      {
-       usuarioLog = JSON.parse(localStorage.getItem('usuarioLog'));
-      }
-      else 
-      {
-       document.location = 'LogIn.html';
-      }
-
-    
-        let validate = currentpost.likes.filter(like => like == usuarioLog.mail);
-
-        console.log(validate);
-
-        if(validate != usuarioLog.mail)
-        {
-         currentpost.likes.push(usuarioLog.mail);
-         localStorage.setItem('usuarioPost',JSON.stringify(allPosts));
-         document.location = "userProfile.html";
-        }
-        if(validate == usuarioLog.mail)
-        {
-         currentpost.likes.splice(validate);
-         localStorage.setItem('usuarioPost',JSON.stringify(allPosts));
-         document.location = "userProfile.html";
-
-        }
-        
-    }
-
-        
-         
+             let usuarioLog;
+       
+             if(localStorage.getItem('usuarioLog'))
+             {
+              usuarioLog = JSON.parse(localStorage.getItem('usuarioLog'));
+             }
+             else 
+             {
+              document.location = 'LogIn.html';
+             }
+       
+           
+             let validate = currentpost.likes.find(like => like == usuarioLog.mail);
+       
+             console.log(validate);
+       
+               if(!validate)
+               {
+                 currentpost.likes.push(usuarioLog.mail);
+                 localStorage.setItem('usuarioPost',JSON.stringify(allPosts));
+                  document.location = "userProfile.html";
+                  console.log(currentpost.likes);
+               }
+               if(validate)
+               {
+                 currentpost.likes.splice(currentpost.likes.findIndex(x => x === usuarioLog.mail), 1);
+                 localStorage.setItem('usuarioPost',JSON.stringify(allPosts));
+                 document.location = "userProfile.html";
+                 console.log(currentpost.likes);
+               }
+           }
          
          //carga todo lo anterior en userProfile.html///////////////////
          userdiv.append(userPic);
@@ -195,46 +200,56 @@ else
 //Poblar parte Publicaciones/////////////////////////////////////////////////////////////
 
 
+//poblar parte lista de amigos///////////////////////////////////////////////////////////
 
-
-
-
-function likeDislike(thisPost)
+if(usuarioProfile.friendsList.length > -1)
 {
-    let usuarioLog;
-
-    if(localStorage.getItem('usuarioLog'))
-    {
-      usuarioLog = JSON.parse(localStorage.getItem('usuarioLog'));
-    }
-    else 
-    {
-      document.location = 'LogIn.html';
-    }
-
-    let currentpost = allPosts.find(post => post == thisPost);
+    let friend = usuarioProfile.friendsList;
+    let allUsers = JSON.parse(localStorage.getItem('usuarios'));
     
-    let validate = currentpost.likes.find(like => like == usuarioLog.mail);
+    let friendlist = allUsers.filter(x => friend.includes(x.mail));
+    
+    console.log(friendlist);
 
-    console.log(validate);
-
-    if(!validate)
+    for(var i = 0; i < friendlist.length; i ++)
     {
-        currentpost.likes.push(usuarioLog.mail);
-        localStorage.setItem('usuarioPost',JSON.stringify(allPosts));
-        //document.location = "userProfile.html";
-    }
-    if(validate == usuarioLog.mail)
-    {
-        currentpost.likes.splice(validate);
-        localStorage.setItem('usuarioPost',JSON.stringify(allPosts));
-        //document.location = "userProfile.html";
+        console.log(friendlist[i]);
+        let friendListDiv = document.getElementById('friendList');
+        let list = document.createElement("ul");
+        let item = document.createElement("li");
+        let friendName = document.createElement('a');
+        let friendPic = new Image;
+        
+        let usuarioProf = friendlist[i];
+
+        friendName.innerText = friendlist[i].name;
+        friendName.style.textDecoration = "none";
+        friendName.style.color = "black";
+        friendName.style.paddingLeft = "20px";
+        friendName.onclick = function()
+        {
+            localStorage.setItem('usuarioProfile', JSON.stringify(usuarioProf));
+
+            document.location = "userProfile.html"
+        }
+
+        friendPic.src = friendlist[i].profilePic;
+        friendPic.height = 50;
+        friendPic.width = 50;
+        friendPic.style.borderRadius = "25px";
+
+        item.style.listStyle = "none";
+        
+
+        item.append(friendPic);
+        item.append(friendName);
+        list.append(item);
+        friendListDiv.append(list);
+
 
     }
+
+
 }
 
-
-
-
-//poblar parte lista de amigos///////////////////////////////////////////////////////////
 //poblar parte lista de amigos///////////////////////////////////////////////////////////

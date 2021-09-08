@@ -2,6 +2,7 @@
 .publiList
 {
     padding-left: 0px;
+    margin-top: 50px;
 }
 .foto ul{
     display: flex;
@@ -12,27 +13,46 @@
     
 }
 .foto ul li img{
-    width: 500px;
-    height: 500px;
+    
 }
 .foto ul{
     display: block;
-    background-color: #EAE2B7;
     list-style-type: none;
 }
 .avatar
 {
+    position: fixed;
     background-color: #EAE2B7;
     text-align: end;
     font-size: xx-large;
+    z-index: 10;
+    
 }
 .contenedorEnvioImg
 {
+    left: 0;
+    position: fixed;
     background-color: #EAE2B7;
-    padding-left: 30px;
-    text-align: start;
+    padding-bottom: 10px;
+    z-index: 10;
 }
 .friendList
 {
-    background-color: aqua;
+    position: fixed;
+    top: 55px;
+    right: 0px;
+    background-color: #d6cfa8;
+    min-height: 500px;
+    max-height: fit-content;
+}
+
+
+.btn
+{
+    margin-top: 7px;
+}
+.userbar
+{
+    margin-left: 10px;
+    left: 0px;
 }
