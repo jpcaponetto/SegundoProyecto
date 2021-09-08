@@ -143,9 +143,9 @@ if(userPosts.length !== 0)
          
          let currentpost = userPosts[i];
          //funcion de dar like//////////////////////////////////
-            buttonLike.onclick = function() 
-           {
-                let usuarioLog;
+        buttonLike.onclick = function() {
+
+             let usuarioLog;
        
              if(localStorage.getItem('usuarioLog'))
              {
@@ -157,22 +157,22 @@ if(userPosts.length !== 0)
              }
        
            
-             let validate = currentpost.likes.filter(like => like == usuarioLog.mail);
+             let validate = currentpost.likes.find(like => like == usuarioLog.mail);
        
              console.log(validate);
        
                if(!validate)
                {
                  currentpost.likes.push(usuarioLog.mail);
-                 localStorage.setItem('usuarioPost',JSON.stringify(usuariosPost));
-                  document.location = "mainred.html";
+                 localStorage.setItem('usuarioPost',JSON.stringify(allPosts));
+                  document.location = "userProfile.html";
                   console.log(currentpost.likes);
                }
                if(validate)
                {
                  currentpost.likes.splice(currentpost.likes.findIndex(x => x === usuarioLog.mail), 1);
-                 localStorage.setItem('usuarioPost',JSON.stringify(usuariosPost));
-                 document.location = "mainred.html";
+                 localStorage.setItem('usuarioPost',JSON.stringify(allPosts));
+                 document.location = "userProfile.html";
                  console.log(currentpost.likes);
                }
            }

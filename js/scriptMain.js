@@ -199,14 +199,14 @@ function postsList()
            if(!validate)
            {
               currentpost.likes.push(usuarioLog.mail);
-              localStorage.setItem('usuarioPost',JSON.stringify(usuariosPost));
+              localStorage.setItem('usuarioPost',JSON.stringify(allPosts));
                document.location = "mainred.html";
                console.log(currentpost.likes);
            }
            if(validate)
            {
               currentpost.likes.splice(currentpost.likes.findIndex(x => x === usuarioLog.mail), 1);
-              localStorage.setItem('usuarioPost',JSON.stringify(usuariosPost));
+              localStorage.setItem('usuarioPost',JSON.stringify(allPosts));
               document.location = "mainred.html";
               console.log(currentpost.likes);
            }
