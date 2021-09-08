@@ -42,6 +42,8 @@
     top: 55px;
     right: 0px;
     background-color: #d6cfa8;
+    min-height: 500px;
+    max-height: fit-content;
 }
 
 
