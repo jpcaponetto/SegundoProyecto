@@ -1,3 +1,4 @@
+///creando la clase para Publicaciones///////////////////////////////////
 class Post
 {
     constructor(id, user, text, mediaLink, likes, date)
@@ -10,9 +11,12 @@ class Post
         this.date = date;
     }
 }
+///creando la clase para Publicaciones///////////////////////////////////
+
+
 
 let usuariosPost = [];
-
+let allPosts = [];
 let usuarioLog ;
 let usuarioProfile;
 
@@ -28,17 +32,21 @@ else
 
 if(localStorage.getItem('usuarioPost'))
 {
-    usuariosPost = JSON.parse(localStorage.getItem('usuarioPost'));
+    allPosts = JSON.parse(localStorage.getItem('usuarioPost'));
 }
+
+usuariosPost = allPosts.filter(post => post.user.id == usuarioLog.id || usuarioLog.friendsList.includes(post.user.mail));
+usuariosPost = usuariosPost.reverse();
+
 
 window.onload = postsList();
 window.onload = sugestUsers();
 
+///poblando div del ususario/////////////////////////
 let avatar = document.createElement("div");
 let avatarDiv = document.getElementById("avatarUsuario");
 let linkName = document.createElement("a");
 let profilePic = new Image;
-
 
 
 profilePic.src = usuarioLog.profilePic;
@@ -58,17 +66,14 @@ linkName.style.textDecoration = "none";
 linkName.style.color = "black";
 linkName.style.fontSize = ""
 
-
-
-
-
 if(linkName.click)
 {
     usuarioProfile = usuarioLog;
     localStorage.setItem('usuarioProfile', JSON.stringify(usuarioProfile));
 }
+///poblando div del ususario/////////////////////////
 
-
+//funcion del boton de nueva publicacion////////
 function makePost(){
     let newPost = new Post;
 
@@ -91,10 +96,12 @@ function makePost(){
        console.log("error");
    }
 }
+//funcion del boton de nueva publicacion////////
 
+//funcion que muestra las publicaciones////////////
 function postsList()
 {
-    usuariosPost = usuariosPost.reverse();
+
     
     for(var i = 0; i < usuariosPost.length; i++)
     {
@@ -106,13 +113,16 @@ function postsList()
         let postUser = document.createElement('p');
         let foto = document.getElementById('contenedorImg');
         let userDiv = document.createElement('div');
+        let postLikes = document.createElement("h6");
+        let buttonLike = document.createElement("button");
         let userpic = new Image;
 
         let img = new Image;
 
         img.src = usuariosPost[i].mediaLink;
         postText.innerText = usuariosPost[i].text;
-        postDate.innerText = new Date(usuariosPost[i].date).toLocaleDateString();
+        postLikes.innerText =  usuariosPost[i].likes.length + "Likes ";
+        postDate.innerText = "Publicado el " + new Date(usuariosPost[i].date).toLocaleDateString();
         console.log(postDate);
         postUser.innerText = usuariosPost[i].user.name;
         userpic.src = usuariosPost[i].user.profilePic;
@@ -153,19 +163,73 @@ function postsList()
         nuevoLi.style.maxWidth = "fit-content";
         nuevoLi.style.minWidth = "fit-content";
 
+        postLikes.classList.toggle("card-list-item");
+        postDate.classList.toggle("card-list-item");
+
+        buttonLike.classList.toggle("btn");
+        buttonLike.classList.toggle("btn-primary");
+        buttonLike.value = "Like";
+        buttonLike.innerText = "Like";
+        
+       let currentpost = usuariosPost[i];
+
+       buttonLike.onclick = function() 
+        { 
+
+
+          let usuarioLog;
+
+          if(localStorage.getItem('usuarioLog'))
+           {
+             usuarioLog = JSON.parse(localStorage.getItem('usuarioLog'));
+            }
+           else 
+           {
+             document.location = 'LogIn.html';
+           }
+
+   
+           let validate = currentpost.likes.find(like => like == usuarioLog.mail); 
+
+           console.log(validate);
+ 
+
+           usuariosPost = usuariosPost.reverse();
+           
+           if(!validate)
+           {
+              currentpost.likes.push(usuarioLog.mail);
+              localStorage.setItem('usuarioPost',JSON.stringify(usuariosPost));
+               document.location = "mainred.html";
+               console.log(currentpost.likes);
+           }
+           if(validate)
+           {
+              currentpost.likes.splice(currentpost.likes.findIndex(x => x === usuarioLog.mail), 1);
+              localStorage.setItem('usuarioPost',JSON.stringify(usuariosPost));
+              document.location = "mainred.html";
+              console.log(currentpost.likes);
+           }
+       
+        }
+
         
         userDiv.append(userpic, postUser);
         nuevoLi.append(userDiv);
         nuevoLi.append(img);
         nuevoLi.append(postText);
+        nuevoLi.append(postLikes);
         nuevoLi.append(postDate);
+        nuevoLi.append(buttonLike)
         nuevoUl.append(nuevoLi);
         foto.append(nuevoUl);
 
         
     }
 }
-    
+//funcion que muestra las publicaciones////////////
+
+//funcion que muestra las sugerencias de amistad/////////////////    
 function sugestUsers()
 {
 
@@ -218,8 +282,6 @@ function sugestUsers()
             }
             else
             {
-                alert("omaewa mo shindeiru");
-                friendButton.disabled = true;
             }
 
             usuarioLog.friendsList = friendList;
@@ -251,4 +313,5 @@ function sugestUsers()
         users.append(usersUL);
     }
 }
-   
+//funcion que muestra las sugerencias de amistad/////////////////    
+  
