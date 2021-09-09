@@ -1,0 +1,32 @@
+
+.divheader.dark
+{
+    align-content: center;
+    transition:1s ease all;
+    background-color: black;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+
+.divheader 
+{
+    font-family: 'Kaisei Tokumin', serif; 
+    transition:1s ease all;
+    text-align: center;
+    background-color: #6D6875;
+    color: black;
+    padding: 10px;
+    display: flex;
+    position: fixed;
+    width: 100%;
+}
+.iconos
+{
+    align-items: flex-end !important;
+    text-align: end;
+}
+.logo
+{
+    text-align: start !important;
+}
