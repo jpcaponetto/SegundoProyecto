@@ -19,7 +19,7 @@
 <body>
   <!-- INICIO DE HEADER  -->
   <header>
-    <div class="prueba"> HOLA </div>
+    <div class="container-fluid">
     <div class="row  divheader">
       <div class="col-sm-12 col-md-4 logo justify-content-xl-start">
         <a href="#PONERLINKDEUSUARIO"> codeANDO </a> <!-- Falta logo-->
@@ -41,40 +41,42 @@
           <li><a class="dropdown-item" href="#">Cerrar Sessión</a></li>
         </ul>
       </div>
-      <div class="row justify-content-end userbar">
-        <div class="col-12 contenedorEnvioImg justify-content-start" id="agregadoFoto">
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#publicar">
-            Nueva Publicacion
-          </button>
-          <div class="modal fade" id="publicar" data-bs-backdrop="false" tabindex="-1"
-            aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Nueva Publicacion</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <label for="imgPost">Publica una imagen directamente con un URL</label>
-                  <input id="imgPost" class="form-control" type="text" placeholder="URL">
-                  <br>
-                  <label for="textPost">Escribe una publicacion</label>
-                  <textarea id="textPost" class="form-control" type="text"
-                    placeholder="que estas pensando..."></textarea>
-                </div>
-                <div class="modal-footer">
-                  <button onclick="makePost()" id="enviarimg" class="btn btn-success">Subir</button>
-                </div>
+      
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row userbar">
+      <div class="col-6 avatar  justify-content-start" id="avatarUsuario">
+      </div>
+      <div class="col-6 contenedorEnvioImg justify-content-end" id="agregadoFoto">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#publicar">
+          Nueva Publicacion
+        </button>
+        <div class="modal fade" id="publicar" data-bs-backdrop="false" tabindex="-1"
+          aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Nueva Publicacion</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <label for="imgPost">Publica una imagen directamente con un URL</label>
+                <input id="imgPost" class="form-control" type="text" placeholder="URL">
+                <br>
+                <label for="textPost">Escribe una publicacion</label>
+                <textarea id="textPost" class="form-control" type="text"
+                  placeholder="que estas pensando..."></textarea>
+              </div>
+              <div class="modal-footer">
+                <button onclick="makePost()" id="enviarimg" class="btn btn-success">Subir</button>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-3 avatar justify-content-end" id="avatarUsuario">
-
-        </div>
       </div>
-    </div>
-
+  </div>
+  </div>
   </header>
 
   <!-- Fin del header , INICIO DEL MAIN -->

@@ -34,9 +34,18 @@ if(localStorage.getItem('usuarioPost'))
 {
     allPosts = JSON.parse(localStorage.getItem('usuarioPost'));
 }
+if(usuarioLog.isAdmin)
+{
+   usuariosPost = allPosts.filter(post => post.user.id == usuarioLog.id || usuarioLog.friendsList.includes(post.user.mail));
+   usuariosPost = usuariosPost.reverse();
+}
+else
+{
+    usuariosPost = allPosts;
+    usuariosPost = usuariosPost.reverse();
+}
 
-usuariosPost = allPosts.filter(post => post.user.id == usuarioLog.id || usuarioLog.friendsList.includes(post.user.mail));
-usuariosPost = usuariosPost.reverse();
+
 
 
 window.onload = postsList();
@@ -101,7 +110,6 @@ function makePost(){
 //funcion que muestra las publicaciones////////////
 function postsList()
 {
-
     
     for(var i = 0; i < usuariosPost.length; i++)
     {
@@ -115,9 +123,33 @@ function postsList()
         let userDiv = document.createElement('div');
         let postLikes = document.createElement("h6");
         let buttonLike = document.createElement("button");
+        let buttonAdmin = document.createElement("button");
         let userpic = new Image;
 
         let img = new Image;
+
+        let currentpost = usuariosPost[i];
+
+        if(usuarioLog.isAdmin)
+        {
+           buttonAdmin.classList.toggle("btn");
+           buttonAdmin.classList.toggle("btn-warning");
+           buttonAdmin.value = "Borrar";
+           buttonAdmin.innerText = "Borrar";
+           buttonAdmin.style.marginLeft = "200px";
+        }
+
+        buttonAdmin.onclick = function()
+        {
+            if(confirm("¿Seguro que desea borrar este post? si lo borra no se podra recuperar."))
+            {
+                allPosts.splice(allPosts.findIndex(x => x == currentpost),1);
+                localStorage.setItem('usuarioPost',JSON.stringify(allPosts));
+                document.location = "mainred.html";
+            }
+
+        }
+
 
         img.src = usuariosPost[i].mediaLink;
         postText.innerText = usuariosPost[i].text;
@@ -171,7 +203,7 @@ function postsList()
         buttonLike.value = "Like";
         buttonLike.innerText = "Like";
         
-       let currentpost = usuariosPost[i];
+      
 
        buttonLike.onclick = function() 
         { 
@@ -215,12 +247,16 @@ function postsList()
 
         
         userDiv.append(userpic, postUser);
+        if(usuarioLog.isAdmin)
+        {
+           userDiv.append(buttonAdmin);
+        }
         nuevoLi.append(userDiv);
         nuevoLi.append(img);
         nuevoLi.append(postText);
         nuevoLi.append(postLikes);
         nuevoLi.append(postDate);
-        nuevoLi.append(buttonLike)
+        nuevoLi.append(buttonLike);
         nuevoUl.append(nuevoLi);
         foto.append(nuevoUl);
 

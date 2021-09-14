@@ -1,35 +1,7 @@
 //Poblar parte usuario/////////////////////////////////////////////////////////////
 let usuarioProfile
-
-if(localStorage.getItem("usuarioProfile"))
-{
-   usuarioProfile = JSON.parse(localStorage.getItem("usuarioProfile"));
-}
-else
-{
-    document.location = "LogIn.html";
-}
-
-let divPic = document.getElementById("profilePic");
-let divName = document.getElementById("profileName");
-let userName = document.createElement("h1");
-let userPic = new Image;
-
-userName = usuarioProfile.name;
-
-userPic.src = usuarioProfile.profilePic;
-userPic.height = 100;
-userPic.width = 100;
-userPic.style.borderRadius = "100px";
-
-
-divPic.append(userPic);
-divName.append(userName);
-//Poblar parte usuario/////////////////////////////////////////////////////////////
-
-
-//Poblar parte Publicaciones/////////////////////////////////////////////////////////////
-
+let usuarioLog
+let allUsers = JSON.parse(localStorage.getItem('usuarios'));
 let allPosts = [];
 let noPost = document.createElement("p");
 
@@ -44,7 +16,104 @@ else
 {
     console.log("no hay posts");
 }
+if(localStorage.getItem("usuarioProfile"))
+{
+   usuarioProfile = JSON.parse(localStorage.getItem("usuarioProfile"));
+}
+else
+{
+    document.location = "LogIn.html";
+}
+if(localStorage.getItem("usuarioLog"))
+{
+    usuarioLog = JSON.parse(localStorage.getItem("usuarioLog"));
+}
+else
+{
+    document.location = "LogIn.html";
+}
 
+let divPic = document.getElementById("profilePic");
+let divName = document.getElementById("profileName");
+let userName = document.createElement("h1");
+let userPic = new Image;
+let block = document.createElement("button");
+let ban = document.createElement("button");
+let adminDiv = document.getElementById("admin");
+
+userName = usuarioProfile.name;
+
+userPic.src = usuarioProfile.profilePic;
+userPic.height = 100;
+userPic.width = 100;
+userPic.style.borderRadius = "100px";
+
+block.classList.toggle("btn");
+block.classList.toggle("btn-warning");
+if(usuarioProfile.isActive == false)
+{
+  block.innerText = "Desbloquear"
+}
+if(usuarioProfile.isActive == true)
+{
+  block.innerText = "Bloquear";
+}
+block.onclick = function()
+{
+    if(!usuarioProfile.isActive)
+    {
+        usuarioProfile.isActive = true;
+        allUsers.splice(usuarioProfile.id, 1, usuarioProfile);
+        localStorage.setItem('usuarios', JSON.stringify(allUsers));
+        localStorage.setItem('usuarioProfile', JSON.stringify(usuarioProfile));
+        document.location = "userProfile.html";
+    }
+    else
+    {
+        usuarioProfile.isActive = false;
+        allUsers.splice(usuarioProfile.id, 1, usuarioProfile);
+        localStorage.setItem('usuarios', JSON.stringify(allUsers));
+        localStorage.setItem('usuarioProfile', JSON.stringify(usuarioProfile));
+        document.location = "userProfile.html";
+    }
+}
+
+ban.classList.toggle("btn");
+ban.classList.toggle("btn-danger");
+ban.innerText = "Borrar";
+ban.onclick = function()
+{
+    if(confirm("Este usuario sera suspendido permanenetemente ¿Desea continuar?"))
+    {
+        allPosts = JSON.parse(localStorage.getItem("usuarioPost"));
+        allUsers.splice(usuarioProfile.id, 1);
+        localStorage.setItem('usuarios', JSON.stringify(allUsers));
+        console.log(allPosts);
+        for(var i = 0; i < allPosts.length; i++)
+        {
+            let currentpost = allPosts[i];
+            if(currentpost.likes.includes(usuarioProfile.mail))
+            {
+                currentpost.likes.splice(currentpost.likes.findIndex(x => x === usuarioProfile.mail), 1);
+                localStorage.setItem('usuarioPost',JSON.stringify(allPosts));
+                console.log(currentpost.likes);
+            }
+        }
+        document.location = "mainred.html";
+    }
+}
+
+
+if(usuarioLog.isAdmin && usuarioProfile.mail != "admin")
+{
+    adminDiv.append(ban, block)
+}
+
+
+
+divPic.append(userPic);
+divName.append(userName);
+//Poblar parte usuario/////////////////////////////////////////////////////////////
 
 //filtra los post que son del usuario y los guarda en un array//////////////////////////
 let userPosts = allPosts.filter(post => post.user.id == usuarioProfile.id);

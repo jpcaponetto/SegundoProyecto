@@ -59,9 +59,17 @@ function LogIn()
     //Loguea o no segun el resultado anterior
     if(currentUser)
     {
-        console.log("Login Succesfully");
-        localStorage.setItem('usuarioLog', JSON.stringify(currentUser));
-        document.location="mainred.html";
+        if(currentUser.isActive)
+        {
+            console.log("Login Succesfully");
+            localStorage.setItem('usuarioLog', JSON.stringify(currentUser));
+            document.location="mainred.html";
+        }
+        else
+        {
+           alert("!Atencion¡ este usuario se encuentra momentaneamente blockeado") 
+        }
+      
     }
     else
     {
@@ -171,6 +179,8 @@ function goLogIn()
 let logIn = document.getElementById("logIn");
 let welcome = document.getElementById("welcome");
 let logFourm = document.getElementById("logFourm");
+let mail = document.getElementById("userMail");
+let pass = document.getElementById("password");
 
 function switchColor()
 {
@@ -179,5 +189,8 @@ function switchColor()
     logIn.classList.toggle("dark");
     welcome.classList.toggle("dark");
     logFourm.classList.toggle("dark");
+    mail.classList.toggle("dark");
+    pass.classList.toggle("dark");
+
 }
 //Dark theme//////////////////////////////////////////////////
