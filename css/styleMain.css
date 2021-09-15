@@ -1,17 +1,17 @@
-
+main{
+    margin-top: 9rem;
+}
 .publiList
 {
     padding-left: 0px;
-    margin-top: 125px;
-
 }
+
 .foto ul{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
-    
 }
 .foto ul{
     display: block;
@@ -33,11 +33,11 @@
 }
 .friendList
 {
+    padding-top: 1.2rem;
     top: 0px;
     right: 0px;
     background-color: #d6cfa8;
-    min-height: 500px;
-    max-height: fit-content;
+    min-height: 100vh;
     width: 300px;
 }
 
