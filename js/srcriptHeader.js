@@ -56,10 +56,12 @@ function search()
 {
     let searchbar = document.getElementById("searchbar").value;
     searchbar = searchbar.toLowerCase();
-    let searchList = allUsers;
+    let searchList = allUsers.filter(user => user.name.includes(searchbar));
+    console.log(searchList);
+    let list = document.getElementById("searchList");
+    list.innerHTML = "";
     for(var i = 0; i < searchList.length; i++)
     {
-        let list = document.getElementById("searchList");
         let item = document.createElement("li");
         let userPic = new Image;
         let userName = document.createElement("a");
@@ -80,10 +82,8 @@ function search()
         }
         item.append(userPic);
         item.append(userName);
-        if(user.name.includes(searchbar) && searchbar != " ")
-        {
-          list.append(item);
-        }
+        list.append(item);
+        
     }
 }
    
