@@ -22,7 +22,7 @@ main{
     background-color: #EAE2B7;
     text-align: start;
     font-size: xx-large;
-    z-index: 11;
+    z-index: 10;
 }
 .contenedorEnvioImg
 {
@@ -53,10 +53,3 @@ main{
     padding-top: 20px;
     display: fixed;
 }
-/* .prueba {
-    position: fixed;
-    border: 1px black solid;
-    width: 100%;
-    z-index: 5 ;
-    background: aqua;
-} */
