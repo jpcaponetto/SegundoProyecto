@@ -1,25 +1,27 @@
+header{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 20;
+}
 
 .divheader.dark
 {
     align-content: center;
     transition:1s ease all;
     background-color: black;
-    overflow-x: hidden;
-    overflow-y: hidden;
+    overflow: hidden;
 }
-
 
 .divheader 
 {
     font-family: 'Kaisei Tokumin', serif; 
     transition:1s ease all;
     text-align: center;
-    background-color: #6D6875;
+    background-color: #EAE2B7;
     color: black;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 5;
+    padding: 10px;
+    display: flex;
 }
 .iconos
 {
