@@ -51,3 +51,41 @@ function editProfile()
     localStorage.setItem('usuarioProfile', JSON.stringify(currentUser));
     document.location ='userProfile.html';
 }
+
+function search()
+{
+    let searchbar = document.getElementById("searchbar").value;
+    searchbar = searchbar.toLowerCase();
+    let searchList = allUsers;
+    for(var i = 0; i < searchList.length; i++)
+    {
+        let list = document.getElementById("searchList");
+        let item = document.createElement("li");
+        let userPic = new Image;
+        let userName = document.createElement("a");
+
+        userPic.src = searchList[i].profilePic;
+        userPic.width = 50;
+        userPic.height = 50;
+        userPic.style.borderRadius = "100px";
+
+        var user = searchList[i];
+        userName.innerText = searchList[i].name;
+        userName.style.textDecoration = "none";
+        userName.style.color = "black";
+        userName.onclick = function()
+        {
+            localStorage.setItem('usuarioProfile', JSON.stringify(user));
+            document.location = "userProfile.html";
+        }
+        item.append(userPic);
+        item.append(userName);
+        if(user.name.includes(searchbar) && searchbar != " ")
+        {
+          list.append(item);
+        }
+    }
+}
+   
+
+    

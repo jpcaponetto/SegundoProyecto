@@ -26,7 +26,10 @@
       </div>
       <div class="col-sm-12 col-md-4 ">
         <!-- <i class="fas fa-search" onclick=""></i>  <form action="" type="text" placeholder="Buscar"> </form>  -->
-        <input id="searchbar" class="form-control" onkeyup="" type="text" name="" placeholder="Buscar..">
+        <input id="searchbar" class="form-control dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false" onkeypress="search()" type="text" name="" placeholder="Buscar..">
+        <ul id="searchList" class="dropdown-menu" aria-labelledby="searchbar">
+       
+        </ul>
       </div>
       <div class="col-sm-12 col-md-4 iconos justify-content-end">
         <i class="fas fa-home "></i>
