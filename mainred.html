@@ -20,12 +20,16 @@
   <!-- INICIO DE HEADER  -->
   <header class="container-fluid" style="margin-bottom: 189px;">
     <div class="row divheader">
+
       <div class="col-sm-12 col-md-4 logo justify-content-xl-start">
         <img src="https://trello.com/1/cards/613928dce89e1647977bb664/attachments/613b7d848f4dfc811c2d1249/previews/613b7d848f4dfc811c2d17b3/download/codeando.png" width="70px" height="70px" style="border-radius: 100px;"> <!-- Falta logo-->
       </div>
       <div class="col-sm-12 col-md-4 ">
         <!-- <i class="fas fa-search" onclick=""></i>  <form action="" type="text" placeholder="Buscar"> </form>  -->
-        <input id="searchbar" class="form-control" onkeyup="" type="text" name="" placeholder="Buscar..">
+        <input id="searchbar" class="form-control dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false" onkeypress="search()" type="text" name="" placeholder="Buscar..">
+        <ul id="searchList" class="dropdown-menu" aria-labelledby="searchbar">
+       
+        </ul>
       </div>
       <div class="col-sm-12 col-md-4 iconos justify-content-end">
         <i class="fas fa-home "></i>
@@ -35,9 +39,10 @@
           aria-expanded="false">
         </i>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li><a class="dropdown-item" href="#">Perfil</a></li>
-          <li><a class="dropdown-item" href="#">Editar Perfil</a></li>
-          <li><a class="dropdown-item" href="#">Cerrar Sessión</a></li>
+          <li><a class="dropdown-item" href="#" onclick="goProfile()">Perfil</a></li>
+          <li><a class="dropdown-item" href="#" onclick="" data-bs-toggle="modal" data-bs-target="#editar">Editar Perfil</a></li>
+        
+          <li><a class="dropdown-item" href="#" onclick="logOut()">Cerrar Sessión</a></li>
         </ul>
       </div>
        <div class="row container-fluid userbar">
@@ -71,13 +76,14 @@
           </div>
         </div>
       </div>
-    </div>
-
+  </div>
+  </div>
   </header>
 
   <!-- Fin del header , INICIO DEL MAIN -->
   <main>
     <aside style="position: fixed; right: 0;">
+
       <div class="col-3 friendList" id="friendList">
         <p>Personas que quizas conoscas</p>
       </div>
@@ -89,6 +95,7 @@
     </div>
   </main>
   <script src="js/scriptMain.js"></script>
+  <script src="js/srcriptHeader.js"></script>
   <script src="https://kit.fontawesome.com/bd6ce91836.js" crossorigin="anonymous"></script>
 </body>
 

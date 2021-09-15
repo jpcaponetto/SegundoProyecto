@@ -57,6 +57,21 @@ body
     border-radius: 25px;
     transition:1s ease all;
     background-color: rgb(95, 95, 95);
+    color: #EAE2B7;
+
+}
+
+.mail.dark
+{
+    background-color: black;
+    color: #EAE2B7;
+
+}
+.pass.dark
+{
+    background-color: black;
+    color: #EAE2B7;
+
 }
 
 
