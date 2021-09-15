@@ -34,7 +34,7 @@ if(localStorage.getItem('usuarioPost'))
 {
     allPosts = JSON.parse(localStorage.getItem('usuarioPost'));
 }
-if(usuarioLog.isAdmin)
+if(!usuarioLog.isAdmin)
 {
    usuariosPost = allPosts.filter(post => post.user.id == usuarioLog.id || usuarioLog.friendsList.includes(post.user.mail));
    usuariosPost = usuariosPost.reverse();
@@ -273,7 +273,15 @@ function sugestUsers()
      
     let friendList = usuarioLog.friendsList;
 
-    let userList  = allUsers.filter(users => users.id != usuarioLog.id && !friendList.includes(users.mail));
+    let userList;
+    if(!usuarioLog.isAdmin)
+    {
+       userList  = allUsers.filter(users => users.id != usuarioLog.id && !friendList.includes(users.mail));
+    }
+    else
+    {
+        userList = allUsers;
+    }
     
     console.log(userList);
     console.log(usuarioLog.friendsList);
