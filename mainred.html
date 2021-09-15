@@ -1,81 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/styleMain.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+    crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/styleMain.css">
+  <link rel="stylesheet" href="css/StyleHeader.css">
+  </link>
 </head>
+
 <body>
   <!-- INICIO DE HEADER  -->
   <header>
-    <div class="col-1 col-4"> 
-      
-        <a href="#PONERLINKDEUSUARIO"> codeANDO </a> <!-- Falta link de usuario-->
-        </div>
-        <div class="col-1 col-4 ">  
-        <i class="fas fa-search" onclick=""></i>  <form action="" type="text" placeholder="Buscar"> </form>
-        </div>
-        <div class="col-1 col-4">
-            <i class="fas fa-home" ></i> 
-            
-            <i class="far fa-comments  bg-secondary"></i>
-        </div>    
-</header>
-
-<!-- Fin del header , INICIO DEL MAIN -->
-    <main>
-    
-        <div class="row justify-content-end userbar">
-            <div class="col-12 contenedorEnvioImg justify-content-start" id="agregadoFoto">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#publicar">
-                    Nueva Publicacion
-                  </button> 
-                  <div class="modal fade" id="publicar" data-bs-backdrop="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Nueva Publicacion</h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <label for="imgPost">Publica una imagen directamente con un URL</label>
-                            <input id="imgPost" class="form-control" type="text" placeholder="URL">  
-                            <br>
-                            <label for="textPost">Escribe una publicacion</label>
-                            <textarea id="textPost" class="form-control" type="text" placeholder="que estas pensando..." ></textarea>
-                        </div>
-                        <div class="modal-footer">
-                            <button onclick="makePost()" id="enviarimg" class="btn btn-success">Subir</button>
-                        </div>
-                      </div>
-                      
-                    </div>
-                  </div>
-                      
-            </div>
-            <div class="col-3 avatar justify-content-end" id="avatarUsuario">
-    
-            </div>
-        </div>
-       <div class="row justify-content-start publiList" >
-        <div class="col-sm-12 col-md-3 col-lg-9 foto" id="contenedorImg">
-           
-           
-        </div>    
-        <div class="col-3 friendList" id="friendList" >
-            <p>Personas que quizas conoscas</p>
-            </div>
-     
-       </div>
+    <div class="container-fluid">
+    <div class="row  divheader">
+      <div class="col-sm-12 col-md-4 logo justify-content-xl-start">
+        <a href="#PONERLINKDEUSUARIO"> codeANDO </a> <!-- Falta logo-->
+      </div>
+      <div class="col-sm-12 col-md-4 ">
+        <!-- <i class="fas fa-search" onclick=""></i>  <form action="" type="text" placeholder="Buscar"> </form>  -->
+        <input id="searchbar" class="form-control dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false" onkeypress="search()" type="text" name="" placeholder="Buscar..">
+        <ul id="searchList" class="dropdown-menu" aria-labelledby="searchbar">
        
+        </ul>
+      </div>
+      <div class="col-sm-12 col-md-4 iconos justify-content-end">
+        <i class="fas fa-home "></i>
+        <i class="fas fa-comment-dots"></i>
+        <i class="fas fa-lightbulb" onclick=""></i> <!-- falta poner funcion -->
+        <i class="dropdown-toggle fas fa-cog" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+          aria-expanded="false">
+        </i>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="#" onclick="goProfile()">Perfil</a></li>
+          <li><a class="dropdown-item" href="#" onclick="" data-bs-toggle="modal" data-bs-target="#editar">Editar Perfil</a></li>
         
-    </div> 
-    </main>
-    <script src="js/scriptMain.js"></script>
-    <script src="https://kit.fontawesome.com/bd6ce91836.js" crossorigin="anonymous"></script>
+          <li><a class="dropdown-item" href="#" onclick="logOut()">Cerrar Sessión</a></li>
+        </ul>
+      </div>
+
+      
+    </div>
+    <div class="modal fade" id="editar" data-bs-backdrop="false" tabindex="-1"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Editar Perfil</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <label for="newPic">Cambiar Foto</label>
+          <input id="newPic" class="form-control" type="text" placeholder="URL">
+          <br>
+          <label for="newName">Cambiar Nombre</label>
+          <textarea id="newName" class="form-control" type="text"
+            placeholder="como quieres que te llamen"></textarea>
+        </div>
+        <div class="modal-footer">
+          <button onclick="editProfile()" id="edit" class="btn btn-success">Hecho</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row userbar">
+      <div class="col-6 avatar  justify-content-start" id="avatarUsuario">
+      </div>
+      <div class="col-6 contenedorEnvioImg justify-content-end" id="agregadoFoto">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#publicar">
+          Nueva Publicacion
+        </button>
+        <div class="modal fade" id="publicar" data-bs-backdrop="false" tabindex="-1"
+          aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Nueva Publicacion</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <label for="imgPost">Publica una imagen directamente con un URL</label>
+                <input id="imgPost" class="form-control" type="text" placeholder="URL">
+                <br>
+                <label for="textPost">Escribe una publicacion</label>
+                <textarea id="textPost" class="form-control" type="text"
+                  placeholder="que estas pensando..."></textarea>
+              </div>
+              <div class="modal-footer">
+                <button onclick="makePost()" id="enviarimg" class="btn btn-success">Subir</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  </div>
+  </header>
+
+  <!-- Fin del header , INICIO DEL MAIN -->
+  <main>
+  
+
+    <div class="row justify-content-start publiList">
+      <div class="col-sm-12 col-md-3 col-lg-9 foto" id="contenedorImg">
+
+
+      </div>
+      <div class="col-3 friendList" id="friendList">
+        <p>Personas que quizas conoscas</p>
+      </div>
+
+    </div>
+
+
+    </div>
+  </main>
+  <script src="js/scriptMain.js"></script>
+  <script src="js/srcriptHeader.js"></script>
+  <script src="https://kit.fontawesome.com/bd6ce91836.js" crossorigin="anonymous"></script>
 </body>
+
 </html>
