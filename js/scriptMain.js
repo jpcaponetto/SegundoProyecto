@@ -12,9 +12,7 @@ class Post
     }
 }
 ///creando la clase para Publicaciones///////////////////////////////////
-
-
-
+///variables e inicializacion///////////////////////////////////////
 let usuariosPost = [];
 let allPosts = [];
 let usuarioLog ;
@@ -44,13 +42,11 @@ else
     usuariosPost = allPosts;
     usuariosPost = usuariosPost.reverse();
 }
-
-
-
-
+///variables e inicializacion///////////////////////////////////////
+///Metodos de cuando se carga la pagina//////////////////////////////
 window.onload = postsList();
 window.onload = sugestUsers();
-
+///Metodos de cuando se carga la pagina//////////////////////////////
 ///poblando div del ususario/////////////////////////
 let avatar = document.createElement("div");
 let avatarDiv = document.getElementById("avatarUsuario");
@@ -84,8 +80,10 @@ if(linkName.click)
 
 //funcion del boton de nueva publicacion////////
 function makePost(){
+    /// crea un nuevo "Post"/////////////////////
     let newPost = new Post;
 
+    ///da los valores al nuevo Post///////////////////////
     newPost.id = usuariosPost.length;
     newPost.date = Date();
     newPost.mediaLink = document.getElementById('imgPost').value;
@@ -93,16 +91,20 @@ function makePost(){
     newPost.likes = [];
     newPost.user = usuarioLog;
    
-   if(newPost.text != "" && newPost.mediaLink != "")
+    ///valida si el form de texto no esta vacio///////
+   if(newPost.text != "")
    {
+       ///pushea el nuevo post en el array de posts////
        usuariosPost.push(newPost);
+       ///pushea el array en localstorage/////
        localStorage.setItem('usuarioPost',JSON.stringify(usuariosPost));
-       console.log(usuariosPost);
+       ///recarga la pagina para que se muestre el nuevo post/////
        window.location.href ="mainred.html";
    }
    else
    {
-       console.log("error");
+       ///alerta si el form de texto esta vacio////////////
+       alert("¡Atencion! El post debe contener texto.")
    }
 }
 //funcion del boton de nueva publicacion////////
@@ -110,10 +112,10 @@ function makePost(){
 //funcion que muestra las publicaciones////////////
 function postsList()
 {
-    
+    ///recorre todas las publicaciones que puede ver el usuario logueado////////////
     for(var i = 0; i < usuariosPost.length; i++)
     {
-
+        ///crea los elementos de la publicacion//////////////////
         let nuevoUl = document.createElement('ul');
         let nuevoLi = document.createElement('li');
         let postText = document.createElement('p');
@@ -127,9 +129,10 @@ function postsList()
         let userpic = new Image;
 
         let img = new Image;
-
+        
         let currentpost = usuariosPost[i];
-
+        
+        ///boton de eliminar publicacion(unicamente visible desde un usuario que sea admin)////////////
         if(usuarioLog.isAdmin)
         {
            buttonAdmin.classList.toggle("btn");
@@ -138,7 +141,7 @@ function postsList()
            buttonAdmin.innerText = "Borrar";
            buttonAdmin.style.marginLeft = "200px";
         }
-
+        ///funcion de borrar///////////////////////
         buttonAdmin.onclick = function()
         {
             if(confirm("¿Seguro que desea borrar este post? si lo borra no se podra recuperar."))
@@ -149,9 +152,13 @@ function postsList()
             }
 
         }
+        ///verifica si el post lleva imagen////////////////////
+        if(currentpost.mediaLink != "")
+        {
+          img.src = usuariosPost[i].mediaLink;
 
-
-        img.src = usuariosPost[i].mediaLink;
+        }
+        ///asigna valores en los elementos//////////////////
         postText.innerText = usuariosPost[i].text;
         postLikes.innerText =  usuariosPost[i].likes.length + "Likes ";
         postDate.innerText = "Publicado el " + new Date(usuariosPost[i].date).toLocaleDateString();
@@ -159,7 +166,7 @@ function postsList()
         postUser.innerText = usuariosPost[i].user.name;
         userpic.src = usuariosPost[i].user.profilePic;
        
-        
+        ///da estilos en los elementos de la publicacion////////////////
         userpic.width = 50;
         userpic.height = 50;
 
@@ -189,11 +196,12 @@ function postsList()
         foto.style.marginTop = "20px";
         foto.style.paddingBottom = "10px";
         foto.style.paddingTop = "10px";
+        foto.style.width = "800px"; 
+
 
         nuevoLi.style.listStyle = "none";
         nuevoLi.classList.toggle("card");
-        nuevoLi.style.maxWidth = "fit-content";
-        nuevoLi.style.minWidth = "fit-content";
+        nuevoLi.style.width = "800px";
 
         postLikes.classList.toggle("card-list-item");
         postDate.classList.toggle("card-list-item");
@@ -204,11 +212,9 @@ function postsList()
         buttonLike.innerText = "Like";
         
       
-
+      ///funcion del boton de like///////////////////////////////
        buttonLike.onclick = function() 
         { 
-
-
           let usuarioLog;
 
           if(localStorage.getItem('usuarioLog'))
@@ -219,12 +225,10 @@ function postsList()
            {
              document.location = 'LogIn.html';
            }
-
    
            let validate = currentpost.likes.find(like => like == usuarioLog.mail); 
 
            console.log(validate);
- 
 
            usuariosPost = usuariosPost.reverse();
            
@@ -242,25 +246,27 @@ function postsList()
               document.location = "mainred.html";
               console.log(currentpost.likes);
            }
-       
         }
 
-        
+        ///append a los elementos de la publicacion///////////////
         userDiv.append(userpic, postUser);
+        ///si el usuario es administrador appendea el boton de borrar publicacion///////////////
         if(usuarioLog.isAdmin)
         {
            userDiv.append(buttonAdmin);
         }
         nuevoLi.append(userDiv);
-        nuevoLi.append(img);
+        ///appendea img si el post tiene imagen////////////////////// 
+        if(img.src != "")
+        {
+          nuevoLi.append(img);
+        }
         nuevoLi.append(postText);
         nuevoLi.append(postLikes);
         nuevoLi.append(postDate);
         nuevoLi.append(buttonLike);
         nuevoUl.append(nuevoLi);
         foto.append(nuevoUl);
-
-        
     }
 }
 //funcion que muestra las publicaciones////////////
@@ -274,21 +280,20 @@ function sugestUsers()
     let friendList = usuarioLog.friendsList;
 
     let userList;
+    ///si el usuario no es administrador filtra los usuarios para que solo muestre los que no estas siguiendo//////
     if(!usuarioLog.isAdmin)
     {
        userList  = allUsers.filter(users => users.id != usuarioLog.id && !friendList.includes(users.mail));
     }
+    ///si el usuario es administrador muestra todos los usuarios/////////////////////
     else
     {
         userList = allUsers;
     }
-    
-    console.log(userList);
-    console.log(usuarioLog.friendsList);
-
-     
+    ///recorre el array resultante////////////////
     for(var i = 0; i < userList.length; i++)
     {
+        ///crea los elementos del item de usuario////////////////////
         let users = document.getElementById("friendList");
         let usersUL = document.createElement('ul');
         let usersLI = document.createElement('li');
@@ -297,10 +302,14 @@ function sugestUsers()
         let friendButton = document.createElement('button');
         let userPic = new Image;
            
+
         let usuarioProf = userList[i];
+
+        ///estilos al nombre de usuario que es un link/////////
         userName.innerText = userList[i].name;
         userName.style.textDecoration = "none";
         userName.style.color = "black";
+        ///funcion de ir al perfil del usuario/////////
         userName.onclick = function()
         {
             console.log(usuarioProf);
@@ -312,10 +321,13 @@ function sugestUsers()
         userName.style.paddingLeft = "5px";
        
         let newFriend = userList[i];
+
+        ///estilos al boton de "Seguir"/////////
         friendButton.classList.toggle("btn");
         friendButton.classList.toggle("btn-primary");
         friendButton.innerText = "Seguir"
         friendButton.style.marginLeft = "10px"
+        ///funcion de agregar a amigos////////////
         friendButton.onclick = function()
         {
             console.log(newFriend);
@@ -323,9 +335,6 @@ function sugestUsers()
             if(!friendList.includes(newFriend.id))
             {
               friendList.push(newFriend.mail);
-            }
-            else
-            {
             }
 
             usuarioLog.friendsList = friendList;
@@ -341,14 +350,15 @@ function sugestUsers()
             document.location = "mainred.html"
 
             console.log(allUsers);
-
         }
-
+        
+        ///estilos a la foto de perfil de usuario///////
         userPic.src = userList[i].profilePic;
         userPic.style.borderRadius = "25px";
         userPic.width = 50;
         userPic.height = 50;
 
+        ///appendea los elementos//////
         userDiv.append(userPic);
         userDiv.append(userName);
         userDiv.append(friendButton);
