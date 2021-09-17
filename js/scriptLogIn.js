@@ -18,19 +18,6 @@ class User
        
     }
 }
-
-class Post
-{
-    constructor(id, user, text, mediaLink, likes, date)
-    {
-        this.id = id;
-        this.user = user;
-        this.text = text;
-        this.mediaLink = mediaLink;
-        this.likes = likes;
-        this.date = date;
-    }
-}
 //clases/////////////////////////////////////////////////////////
 
 

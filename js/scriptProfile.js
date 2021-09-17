@@ -5,8 +5,6 @@ let allUsers = JSON.parse(localStorage.getItem('usuarios'));
 let allPosts = [];
 let noPost = document.createElement("p");
 
-
-
 //verificar si hay posts en el Localstorage///////////////////////////////////////
 if(localStorage.getItem("usuarioPost"))
 {
@@ -16,6 +14,7 @@ else
 {
     console.log("no hay posts");
 }
+//verifica si existe el usuario el perfil/////
 if(localStorage.getItem("usuarioProfile"))
 {
    usuarioProfile = JSON.parse(localStorage.getItem("usuarioProfile"));
@@ -24,6 +23,7 @@ else
 {
     document.location = "LogIn.html";
 }
+//verifica si hay un usuario logueado////////
 if(localStorage.getItem("usuarioLog"))
 {
     usuarioLog = JSON.parse(localStorage.getItem("usuarioLog"));
@@ -33,6 +33,7 @@ else
     document.location = "LogIn.html";
 }
 
+///crea los elementos necesarios para el encabezado del perfil//////
 let divPic = document.getElementById("profilePic");
 let divName = document.getElementById("profileName");
 let userName = document.createElement("h1");
@@ -41,13 +42,16 @@ let block = document.createElement("button");
 let ban = document.createElement("button");
 let adminDiv = document.getElementById("admin");
 
+//da los valores a los elementos
 userName = usuarioProfile.name;
 
 userPic.src = usuarioProfile.profilePic;
+//estilos en la foto de perfil
 userPic.height = 100;
 userPic.width = 100;
 userPic.style.borderRadius = "100px";
 
+//boton de bloquear perfil
 block.classList.toggle("btn");
 block.classList.toggle("btn-warning");
 if(usuarioProfile.isActive == false)
@@ -78,6 +82,7 @@ block.onclick = function()
     }
 }
 
+//boton de borrar perfil
 ban.classList.toggle("btn");
 ban.classList.toggle("btn-danger");
 ban.innerText = "Borrar";
@@ -102,15 +107,13 @@ ban.onclick = function()
         document.location = "mainred.html";
     }
 }
-
-
+//si el usuario es administrador appendea los botones de bloqueo y borrado
 if(usuarioLog.isAdmin && usuarioProfile.mail != "admin")
 {
     adminDiv.append(ban, block)
 }
 
-
-
+//appendea foto y nombre del usuario
 divPic.append(userPic);
 divName.append(userName);
 //Poblar parte usuario/////////////////////////////////////////////////////////////
@@ -212,8 +215,7 @@ if(userPosts.length !== 0)
          
          let currentpost = userPosts[i];
          //funcion de dar like//////////////////////////////////
-        buttonLike.onclick = function() {
-
+         buttonLike.onclick = function() {
              let usuarioLog;
        
              if(localStorage.getItem('usuarioLog'))
@@ -270,55 +272,52 @@ else
 
 
 //poblar parte lista de amigos///////////////////////////////////////////////////////////
-
 if(usuarioProfile.friendsList.length > -1)
 {
+    ///lista de amigos del usuario(array de mails) y lista de usuarios///////
     let friend = usuarioProfile.friendsList;
     let allUsers = JSON.parse(localStorage.getItem('usuarios'));
-    
+    ///lista de usuarios que son amigos/////    
     let friendlist = allUsers.filter(x => friend.includes(x.mail));
     
-    console.log(friendlist);
-
+    ///recorre el resultante del filtro anterior////////
     for(var i = 0; i < friendlist.length; i ++)
     {
-        console.log(friendlist[i]);
+        //crea los elementos necesarios para cada item/////
         let friendListDiv = document.getElementById('friendList');
         let list = document.createElement("ul");
         let item = document.createElement("li");
         let friendName = document.createElement('a');
         let friendPic = new Image;
-        
         let usuarioProf = friendlist[i];
-
+        
+        //da estilo y asigna valor al nombre del usuario/////
         friendName.innerText = friendlist[i].name;
         friendName.style.textDecoration = "none";
         friendName.style.color = "black";
         friendName.style.paddingLeft = "20px";
+        //funcion para ir al prefil de otro usuario tocando su nombre////
         friendName.onclick = function()
         {
             localStorage.setItem('usuarioProfile', JSON.stringify(usuarioProf));
 
             document.location = "userProfile.html"
         }
-
+        
+        //valor y estilo a la foto de perfil de usuario////
         friendPic.src = friendlist[i].profilePic;
         friendPic.height = 50;
         friendPic.width = 50;
         friendPic.style.borderRadius = "25px";
-
+        
+        //estilo en item de la lista
         item.style.listStyle = "none";
         
-
+        //appendea los elemntos 
         item.append(friendPic);
         item.append(friendName);
         list.append(item);
         friendListDiv.append(list);
-
-
     }
-
-
 }
-
 //poblar parte lista de amigos///////////////////////////////////////////////////////////
