@@ -17,57 +17,50 @@
 </head>
 
 <body>
-  <!-- INICIO DE HEADER  -->
-  <header class="container-fluid" style="margin-bottom: 189px;">
-    <div class="row divheader">
-      <div class="col-sm-12 col-md-4 logo justify-content-xl-start">
-        <img src="https://trello.com/1/cards/613928dce89e1647977bb664/attachments/613b7d848f4dfc811c2d1249/previews/613b7d848f4dfc811c2d17b3/download/codeando.png" width="70px" height="70px" style="border-radius: 100px;"> <!-- Falta logo-->
-      </div>
-      <div class="col-sm-12 col-md-4 ">
-        <input id="searchbar" class="form-control dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false" onkeypress="search()" type="text" name="" placeholder="Buscar..">
-        <ul id="searchList" class="dropdown-menu" aria-labelledby="searchbar">
-        </ul>
-      </div>
-      <div class="col-sm-12 col-md-4 iconos justify-content-end">
-        <i class="fas fa-home "></i>
-        <i class="fas fa-comment-dots"></i>
-        <i class="fas fa-lightbulb" onclick=""></i> <!-- falta poner funcion -->
-        <i class="dropdown-toggle fas fa-cog" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
-          aria-expanded="false">
-        </i>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li><a class="dropdown-item" href="#" onclick="goProfile()">Perfil</a></li>
-          <li><a class="dropdown-item" href="#" onclick="" data-bs-toggle="modal" data-bs-target="#editar">Editar Perfil</a></li>
-          <li><a class="dropdown-item" href="#" onclick="logOut()">Cerrar Sessión</a></li>
-        </ul>
-        <div class="modal fade" id="editar" data-bs-backdrop="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Editar Perfil</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <label for="newPic">Cambiar Foto</label>
-                <input id="newPic" class="form-control" type="text" placeholder="URL">
-                <br>
-                <label for="newName">Cambiar Nombre</label>
-                <textarea id="newName" class="form-control" type="text"
-                  placeholder="como quieres que te llamen"></textarea>
-              </div>
-              <div class="modal-footer">
-                <button onclick="editProfile()" id="edit" class="btn btn-success">Hecho</button>
-              </div>
-            </div>
-          </div>
+  
+  <!-- <header style="margin-bottom: 189px;"> -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">  <img src="https://trello.com/1/cards/613928dce89e1647977bb664/attachments/613b7d848f4dfc811c2d1249/previews/613b7d848f4dfc811c2d17b3/download/codeando.png" width="70px" height="70px" style="border-radius: 100px;"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <form class="d-flex mx-auto">
+            <input class="form-control me-2" type="search" placeholder="Buscar.." aria-label="Search">
+          </form>
+          <ul class="navbar-nav  mb-2 mb-lg-0">
+            <li class="nav-item me-2">
+              <i class="fas fa-home "></i>
+            </li>
+            <li class="nav-item me-2">
+              <i class="fas fa-comment-dots"></i>
+            </li>
+            <li class="nav-item me-2">
+            <i class="fas fa-lightbulb" onclick=""></i>  
+           </li>
+            <li class="nav-item dropdown me-2">
+                <i class="dropdown-toggle fas fa-cog" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                aria-expanded="false">
+              </i>
+              <ul class="dropdown-menu dropdown-menu-end aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" href="#" onclick="goProfile()">Perfil</a></li>
+                  <li><a class="dropdown-item" href="#" onclick="" data-bs-toggle="modal" data-bs-target="#editar">Editar Perfil</a></li>
+                  <li><a class="dropdown-item" href="#" onclick="logOut()">Cerrar Sessión</a></li>
+                </ul>
+            </li>
+          </ul>
         </div>
-
-
       </div>
+    </nav>
+
+    
+    <div class="divheader">
        <div class="row container-fluid userbar">
-        <div class="col-4 avatar justify-content-start" id="avatarUsuario">
+        <div class="col-12 col-md-4 avatar justify-content-start d-flex justify-content-center align-items-center" id="avatarUsuario">
         </div>
-       <div class="col-4 contenedorEnvioImg" id="agregadoFoto">
+       <div class="col-12 col-md-4 contenedorEnvioImg" id="agregadoFoto">
           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#publicar">
             Nueva Publicacion
           </button>
@@ -96,8 +89,10 @@
         </div>
       </div>
     </div>
-  </div>
-  </header>
+  </header> 
+
+
+
 
   <!-- Fin del header , INICIO DEL MAIN -->
   <main>
@@ -117,5 +112,4 @@
   <script src="js/srcriptHeader.js"></script>
   <script src="https://kit.fontawesome.com/bd6ce91836.js" crossorigin="anonymous"></script>
 </body>
-
 </html>

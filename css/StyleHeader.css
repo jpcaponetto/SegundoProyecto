@@ -32,3 +32,15 @@ header{
 {
     text-align: start !important;
 }
+#searchbar 
+{
+display: flex;
+}
+@media screen and (max-width: 419px)
+{
+    #searchbar {
+        display: none
+    }
+}
+    
+
