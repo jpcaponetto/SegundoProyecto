@@ -36,11 +36,8 @@ header{
 {
 display: flex;
 }
-@media screen and (max-width: 419px)
+#lightIcon.dark
 {
-    #searchbar {
-        display: none
-    }
+color: #fff;
+transition: .3s ease-in-out;
 }
-    
-

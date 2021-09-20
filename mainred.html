@@ -20,7 +20,7 @@
   
   <!-- <header style="margin-bottom: 189px;"> -->
   <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="divHeader">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">  <img src="https://trello.com/1/cards/613928dce89e1647977bb664/attachments/613b7d848f4dfc811c2d1249/previews/613b7d848f4dfc811c2d17b3/download/codeando.png" width="70px" height="70px" style="border-radius: 100px;"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,18 +30,18 @@
           <form class="d-flex mx-auto">
             <input class="form-control me-2" type="search" placeholder="Buscar.." aria-label="Search">
           </form>
-          <ul class="navbar-nav  mb-2 mb-lg-0">
+          <ul class="navbar-nav  mb-2 mb-lg-0" id="lightIcons">
             <li class="nav-item me-2">
-              <i class="fas fa-home "></i>
+              <i class="fas fa-home"></i>
             </li>
             <li class="nav-item me-2">
               <i class="fas fa-comment-dots"></i>
             </li>
             <li class="nav-item me-2">
-            <i class="fas fa-lightbulb" onclick=""></i>  
+            <i class="fas fa-lightbulb" onclick="switchColor()"></i>  
            </li>
             <li class="nav-item dropdown me-2">
-                <i class="dropdown-toggle fas fa-cog" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                <i class="dropdown-toggle fas fa-cog lightIcons" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
                 aria-expanded="false">
               </i>
               <ul class="dropdown-menu dropdown-menu-end aria-labelledby="dropdownMenuButton1">
@@ -109,7 +109,7 @@
     </div>
   </main>
   <script src="js/scriptMain.js"></script>
-  <script src="js/srcriptHeader.js"></script>
+  <!-- <script src="js/srcriptHeader.js"></script> -->
   <script src="https://kit.fontawesome.com/bd6ce91836.js" crossorigin="anonymous"></script>
 </body>
 </html>

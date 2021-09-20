@@ -367,5 +367,13 @@ function sugestUsers()
         users.append(usersUL);
     }
 }
-//funcion que muestra las sugerencias de amistad/////////////////    
+//funcion que muestra las sugerencias de amistad/////////////////   
+
+let divheader = document.getElementById("divHeader");
+let lighticons = document.getElementById("lightIcons");
+function switchColor()
+{ 
+divheader.classList.toggle("dark");
+lighticons.classList.toggle("dark");
+}
   

@@ -169,7 +169,10 @@ let logFourm = document.getElementById("logFourm");
 let mail = document.getElementById("userMail");
 let pass = document.getElementById("password");
 
+let divheader = document.getElementById("divHeader");
+let lighticon = document.getElementById("lightIcon");
 function switchColor()
+
 {
     document.body.classList.toggle("dark");
 
@@ -178,6 +181,7 @@ function switchColor()
     logFourm.classList.toggle("dark");
     mail.classList.toggle("dark");
     pass.classList.toggle("dark");
-
+    divheader.classList.toggle("dark");
+    lighticon.classList.toggle("dark");
 }
 //Dark theme//////////////////////////////////////////////////
