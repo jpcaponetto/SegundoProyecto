@@ -38,4 +38,14 @@ img
 {
     object-fit: contain;
 }
+.friendList.dark {
+background-color: #000;
+transition: ease-in-out .3s;
+color: white
+}
+.userCont.dark {
+background-color: #000;
+transition: ease-in-out .3s;
+color: white
+}
 
