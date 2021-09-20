@@ -4,6 +4,7 @@ main{
 .publiList
 {
     padding-left: 0px;
+    margin-top: 200px;
 
 }
 
@@ -63,4 +64,18 @@ main{
 {
 background-color: #000;
 transition: ease-in-out .3s;
+}
+.aside_out {
+    position: fixed;
+    right: 0;
+    top: 190px;
+}
+@media screen and (max-width: 1159px){
+    .aside_out{
+        position: static; 
+    }
+    .friendList{
+        min-height: auto;
+        width: 100%;
+    }
 }
