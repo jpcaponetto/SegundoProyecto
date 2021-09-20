@@ -6,8 +6,6 @@
     font-weight: 800;
     font-size: xx-large;
     font-family:sans-serif;
-    padding: 10px;
-    position: fixed;
     top: 0;
     z-index: 10;
 }
