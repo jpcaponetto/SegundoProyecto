@@ -27,6 +27,11 @@ defaultProfPic.src = "https://www.sogapar.info/wp-content/uploads/2015/12/defaul
 let listaAmigos = [];
 let usuarios = [];
 
+if(localStorage.getItem('usuarioLog') != "undefined")
+{
+    document.location = "mainred.html";
+}
+
 if(localStorage.getItem('usuarios'))
 {
     usuarios = JSON.parse(localStorage.getItem('usuarios'))

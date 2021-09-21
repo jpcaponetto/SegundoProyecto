@@ -46,6 +46,41 @@ color: white
 .userCont.dark {
 background-color: #000;
 transition: ease-in-out .3s;
-color: white
+color: white;
 }
-
+.homeIcon
+{
+    transition: ease-in-out .3s;
+    color: black;
+}
+.homeIcon.dark
+{
+    color: white;
+}
+.messageIcon
+{
+    color: black;
+}
+.messageIcon.dark
+{
+    transition: ease-in-out .3s;
+    color: white;
+}
+.lightIcon
+{
+    transition: ease-in-out .3s;
+    color: black;
+}
+.lightIcon.dark
+{
+    color: white;
+}
+.gearIcon
+{
+    transition: ease-in-out .3s;
+    color: black;
+}
+.gearIcon.dark
+{
+   color: white;
+}

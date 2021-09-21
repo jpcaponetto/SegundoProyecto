@@ -15,7 +15,7 @@ if(localStorage.getItem('usuarioLog'))
 //si no hay un usuario envia al logIn///
 else
 {
-    document.location('LogIn.html');
+    document.location = 'LogIn.html';
 }
 //funcion para cerrar sesion///
 function logOut()

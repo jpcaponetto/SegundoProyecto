@@ -17,8 +17,20 @@ let usuariosPost = [];
 let allPosts = [];
 let usuarioLog ;
 let usuarioProfile;
+let darkMode;
 
-if(localStorage.getItem('usuarioLog'))
+if(localStorage.getItem('darkMode'))
+{
+    darkMode = JSON.parse(localStorage.getItem('darkMode'));
+}
+else
+{
+    darkMode = false;
+    localStorage.setItem('darkMode', JSON.stringify(darkMode));
+}
+
+
+if(localStorage.getItem('usuarioLog') != "undefined")
 {
   usuarioLog = JSON.parse(localStorage.getItem('usuarioLog'));
 }
@@ -43,10 +55,7 @@ else
     usuariosPost = usuariosPost.reverse();
 }
 ///variables e inicializacion///////////////////////////////////////
-///Metodos de cuando se carga la pagina//////////////////////////////
-window.onload = postsList();
-window.onload = sugestUsers();
-///Metodos de cuando se carga la pagina//////////////////////////////
+
 ///poblando div del ususario/////////////////////////
 let avatar = document.createElement("div");
 let avatarDiv = document.getElementById("avatarUsuario");
@@ -58,8 +67,8 @@ profilePic.src = usuarioLog.profilePic;
 linkName.href = "userProfile.html";
 linkName.innerText = usuarioLog.name.toString();
 
-avatar.append(linkName);
 avatar.append(profilePic);
+avatar.append(linkName);
 
 avatarDiv.append(avatar);
 
@@ -68,7 +77,6 @@ profilePic.width = 50;
 profilePic.style.padding = "10px";
 
 linkName.style.textDecoration = "none";
-linkName.style.color = "black";
 linkName.style.fontSize = ""
 
 if(linkName.click)
@@ -77,7 +85,11 @@ if(linkName.click)
     localStorage.setItem('usuarioProfile', JSON.stringify(usuarioProfile));
 }
 ///poblando div del ususario/////////////////////////
-
+///Metodos de cuando se carga la pagina//////////////////////////////
+window.onload = postsList();
+window.onload = sugestUsers();
+window.onload = detectTheme();
+///Metodos de cuando se carga la pagina//////////////////////////////
 //funcion del boton de nueva publicacion////////
 function makePost(){
     /// crea un nuevo "Post"/////////////////////
@@ -198,10 +210,12 @@ function postsList()
         foto.style.paddingTop = "10px";
         foto.style.width = "800px"; 
 
-
         nuevoLi.style.listStyle = "none";
         nuevoLi.classList.toggle("card");
-        nuevoLi.style.width = "800px";
+        nuevoLi.style.width = "600px";
+        nuevoLi.style.maxWidth = "600px"
+        
+
 
         postLikes.classList.toggle("card-list-item");
         postDate.classList.toggle("card-list-item");
@@ -246,6 +260,21 @@ function postsList()
               document.location = "mainred.html";
               console.log(currentpost.likes);
            }
+        }
+
+        if(darkMode == true)
+        {
+            foto.classList.toggle("card-img-top")
+            foto.style.marginTop = "20px";
+            foto.style.paddingBottom = "10px";
+            foto.style.paddingTop = "10px";
+            foto.style.width = "800px"; 
+            nuevoLi.style.listStyle = "none";
+            nuevoLi.classList.toggle("text-white");
+            nuevoLi.classList.toggle("bg-dark");
+            postText.classList.toggle("card-text");
+
+            postText.style.backgroundColor = "black";
         }
 
         ///append a los elementos de la publicacion///////////////
@@ -309,6 +338,10 @@ function sugestUsers()
         userName.innerText = userList[i].name;
         userName.style.textDecoration = "none";
         userName.style.color = "black";
+        if(darkMode)
+        {
+            userName.style.color = "white";
+        }
         ///funcion de ir al perfil del usuario/////////
         userName.onclick = function()
         {
@@ -369,11 +402,39 @@ function sugestUsers()
 }
 //funcion que muestra las sugerencias de amistad/////////////////   
 
-let divheader = document.getElementById("divHeader");
-let lighticons = document.getElementById("lightIcons");
+
 function switchColor()
 { 
-divheader.classList.toggle("dark");
-lighticons.classList.toggle("dark");
+  darkMode = !darkMode; 
+  localStorage.setItem('darkMode', JSON.stringify(darkMode));
+  document.location = "mainred.html"
 }
-  
+
+function detectTheme()
+{
+  let divheader = document.getElementById("divHeader");
+  let userBar = document.getElementById("userbar");
+  let friendDiv = document.getElementById("friendList"); 
+  let newPostDiv = document.getElementById("agregadoFoto");
+  let homeIcon = document.getElementById("homeIcon");
+  let messageIcon = document.getElementById("messageIcon");
+  let lightIcon = document.getElementById("lightIcon");
+  let gearIcon = document.getElementById("gearIcon");
+  let main = document.getElementById("main");  
+  let modal = document.getElementById("modalPost");  
+  if(darkMode)
+  {
+    divheader.classList.toggle("navbar-dark");
+    divheader.classList.toggle("bg-dark");
+    userBar.classList.toggle("dark");
+    friendDiv.classList.toggle("dark");
+    avatarDiv.classList.toggle("dark");
+    newPostDiv.classList.toggle("dark");
+    messageIcon.classList.toggle("dark");
+    homeIcon.classList.toggle("dark");
+    lightIcon.classList.toggle("dark");
+    gearIcon.classList.toggle("dark");
+    main.classList.toggle("dark");
+    modal.classList.toggle("bg-dark");
+  }
+}

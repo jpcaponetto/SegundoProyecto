@@ -20,31 +20,34 @@
   
   <!-- <header style="margin-bottom: 189px;"> -->
   <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="divHeader">
+    <nav class="navbar navbar-expand-lg  bg-light" id="divHeader">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">  <img src="https://trello.com/1/cards/613928dce89e1647977bb664/attachments/613b7d848f4dfc811c2d1249/previews/613b7d848f4dfc811c2d17b3/download/codeando.png" width="70px" height="70px" style="border-radius: 100px;"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <form class="d-flex mx-auto">
-            <input class="form-control me-2" type="search" placeholder="Buscar.." aria-label="Search">
-          </form>
-          <ul class="navbar-nav  mb-2 mb-lg-0" id="lightIcons">
+          <div class="d-flex mx-auto">
+            <input id="searchbar" class="form-control dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false" onkeypress="search()" type="text" name="" placeholder="Buscar..">
+            <ul id="searchList" class="dropdown-menu" aria-labelledby="searchbar">
+            </ul>
+            
+          </div>
+          <ul class="navbar-nav  mb-2 mb-lg-0" id="">
             <li class="nav-item me-2">
-              <i class="fas fa-home"></i>
+              <i id="homeIcon" class="fas fa-home homeIcon"></i>
             </li>
             <li class="nav-item me-2">
-              <i class="fas fa-comment-dots"></i>
+              <i id="messageIcon" class="fas fa-comment-dots messageIcon"></i>
             </li>
             <li class="nav-item me-2">
-            <i class="fas fa-lightbulb" onclick="switchColor()"></i>  
+            <i id="lightIcon" class="fas fa-lightbulb lightIcon" onclick="switchColor()"></i>  
            </li>
             <li class="nav-item dropdown me-2">
-                <i class="dropdown-toggle fas fa-cog lightIcons" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                <i class="dropdown-toggle fas fa-cog gearIcon" type="button" id="gearIcon" data-bs-toggle="dropdown"
                 aria-expanded="false">
               </i>
-              <ul class="dropdown-menu dropdown-menu-end aria-labelledby="dropdownMenuButton1">
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="gearIcon">
                   <li><a class="dropdown-item" href="#" onclick="goProfile()">Perfil</a></li>
                   <li><a class="dropdown-item" href="#" onclick="" data-bs-toggle="modal" data-bs-target="#editar">Editar Perfil</a></li>
                   <li><a class="dropdown-item" href="#" onclick="logOut()">Cerrar Sessión</a></li>
@@ -53,12 +56,12 @@
           </ul>
         </div>
       </div>
+     
     </nav>
-
     
-    <div class="divheader">
+    <div id="userbar" class="divheader">
        <div class="row container-fluid userbar">
-        <div class="col-12 col-md-4 avatar justify-content-start d-flex justify-content-center align-items-center" id="avatarUsuario">
+        <div class="col-12 col-md-4 avatar justify-content-start d-flex justify-content-center align-items-center avatarUsuario" id="avatarUsuario">
         </div>
        <div class="col-12 col-md-4 contenedorEnvioImg" id="agregadoFoto">
           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#publicar">
@@ -67,7 +70,7 @@
           <div class="modal fade" id="publicar" data-bs-backdrop="false" tabindex="-1"
             aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
-              <div class="modal-content">
+              <div id="modalPost" class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLabel">Nueva Publicacion</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -95,7 +98,7 @@
 
 
   <!-- Fin del header , INICIO DEL MAIN -->
-  <main>
+  <main id="main">
     <aside style="position: fixed; right: 0;">
 
       <div class="col-3 friendList" id="friendList">
@@ -109,6 +112,7 @@
     </div>
   </main>
   <script src="js/scriptMain.js"></script>
+  <script src="js/srcriptHeader.js"></script>
   <!-- <script src="js/srcriptHeader.js"></script> -->
   <script src="https://kit.fontawesome.com/bd6ce91836.js" crossorigin="anonymous"></script>
 </body>
