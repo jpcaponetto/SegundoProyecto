@@ -1,9 +1,34 @@
+class Post
+{
+    constructor(id, user, text, mediaLink, likes, date)
+    {
+        this.id = id;
+        this.user = user;
+        this.text = text;
+        this.mediaLink = mediaLink;
+        this.likes = likes;
+        this.date = date;
+    }
+}
+
 //Poblar parte usuario/////////////////////////////////////////////////////////////
 let usuarioProfile
 let usuarioLog
 let allUsers = JSON.parse(localStorage.getItem('usuarios'));
 let allPosts = [];
 let noPost = document.createElement("p");
+let newPostButton = document.getElementById('agregadoFoto');
+let darkMode;
+
+if(localStorage.getItem('darkMode'))
+{
+    darkMode = JSON.parse(localStorage.getItem('darkMode'));
+}
+else
+{
+    darkMode = false;
+    localStorage.setItem('darkMode', JSON.stringify(darkMode));
+}
 
 //verificar si hay posts en el Localstorage///////////////////////////////////////
 if(localStorage.getItem("usuarioPost"))
@@ -32,6 +57,13 @@ else
 {
     document.location = "LogIn.html";
 }
+
+if(usuarioProfile.id != usuarioLog.id)
+{
+    newPostButton.style.visibility = "hidden";
+}
+
+window.onload = detectTheme();
 
 ///crea los elementos necesarios para el encabezado del perfil//////
 let divPic = document.getElementById("profilePic");
@@ -141,27 +173,49 @@ if(userPosts.length !== 0)
          let list = document.createElement("ul");
          let item = document.createElement("li");
          let postText = document.createElement("p");
-         let postUser = document.createElement("h1");
+         let postUser = document.createElement("p");
          let postDate = document.createElement("h6");
          let postLikes = document.createElement("h6");
          let buttonLike = document.createElement("button");
          let postPic = new Image;
          let userPic = new Image;
-         
+         let buttonAdmin = document.createElement("button");
+
          //inicializa los valores tomados de la lista de posts y el usuario al que corresponde el perfil////
          postText.innerText = userPosts[i].text;
-         postPic.src = userPosts[i].mediaLink;
+         if(userPosts[i].mediaLink != "")
+         {
+            postPic.src = userPosts[i].mediaLink;
+         }
          postUser.innerText = userPosts[i].user.name;
          userPic.src = userPosts[i].user.profilePic;
          postLikes.innerText =  userPosts[i].likes.length + "Likes ";
          postDate.innerText = "Publicado el " + new Date(userPosts[i].date).toLocaleDateString();
          
-         
          postText.style.backgroundColor = "whitesmoke";
-
+          
+         if(usuarioLog.isAdmin || usuarioLog.id == usuarioProfile.id)
+         {
+            buttonAdmin.classList.toggle("btn");
+            buttonAdmin.classList.toggle("btn-warning");
+            buttonAdmin.value = "Borrar";
+            buttonAdmin.innerText = "Borrar";
+            buttonAdmin.style.marginLeft = "200px";
+         }
+         ///funcion de borrar///////////////////////
+         buttonAdmin.onclick = function()
+         {
+             if(confirm("¿Seguro que desea borrar este post? si lo borra no se podra recuperar."))
+             {
+                 allPosts.splice(allPosts.findIndex(x => x == currentpost),1);
+                 localStorage.setItem('usuarioPost',JSON.stringify(allPosts));
+                 document.location = "userProfile.html";
+             }
+ 
+         }
          //da estilos al nombre del usuario/////////////////
-         postUser.style.marginTop = "0px";
-
+         postUser.style.marginTop = "10px";
+         postUser.style.fontWeight = "800";
          //da estilos a la foto del usuario////////////////
          userPic.height = 50; 
          userPic.width = 50; 
@@ -171,22 +225,19 @@ if(userPosts.length !== 0)
                    
          //da estilos a la imagen de la publicacion////////////////////
          postPic.classList.toggle("card-img.top");
-         postPic.style.height = "400px";
-         postPic.style.width = "500px";
-         postPic.style.marginTop = "0px";
-         postPic.style.paddingBottom = "0px";
-         postPic.style.paddingTop = "0px";
+         postPic.style.maxWidth = "800px";
+        
          
          //da estilos a la publicaion especifica///////////////////
          item.classList.toggle("card");
          item.style.width = 10;
          item.style.listStyle = "none";
          item.style.textAlign = "start"; 
-         item.style.maxHeight = "fit-content";
-         item.style.maxWidth = "fit-content";
-         item.style.minHeight = "fit-content";
-         item.style.minWidth = "fit-content";
+         item.style.maxWidth = "600px";
+         item.style.minWidth = "600px";
          item.style.marginLeft = "400px";
+         
+
 
          list.style.alignItems = "end";
          list.style.paddingLeft = "200px";        
@@ -247,12 +298,24 @@ if(userPosts.length !== 0)
                  console.log(currentpost.likes);
                }
            }
-         
+           if(darkMode)
+           {
+              item.classList.toggle("text-white");
+              item.classList.toggle("bg-dark");
+              postText.style.backgroundColor = "black";
+           }
          //carga todo lo anterior en userProfile.html///////////////////
          userdiv.append(userPic);
          userdiv.append(postUser);
+         if(usuarioLog.isAdmin || usuarioLog.id == usuarioProfile.id)
+         {
+            userdiv.append(buttonAdmin);
+         }
          item.append(userdiv);
-         item.append(postPic);
+         if(postPic.src != "")
+         {
+           item.append(postPic);
+         }
          item.append(postText);
          item.append(postLikes);
          item.append(postDate);
@@ -295,6 +358,11 @@ if(usuarioProfile.friendsList.length > -1)
         friendName.innerText = friendlist[i].name;
         friendName.style.textDecoration = "none";
         friendName.style.color = "black";
+        if(darkMode)
+        {
+          friendName.style.color = "white";
+
+        }
         friendName.style.paddingLeft = "20px";
         //funcion para ir al prefil de otro usuario tocando su nombre////
         friendName.onclick = function()
@@ -321,3 +389,74 @@ if(usuarioProfile.friendsList.length > -1)
     }
 }
 //poblar parte lista de amigos///////////////////////////////////////////////////////////
+
+function switchColor()
+{ 
+  darkMode = !darkMode; 
+  localStorage.setItem('darkMode', JSON.stringify(darkMode));
+  document.location = "userProfile.html"
+}
+
+function detectTheme()
+{
+  let divheader = document.getElementById("divHeader");
+  let friendDiv = document.getElementById("friendList"); 
+  let newPostDiv = document.getElementById("agregadoFoto");
+  let profilePic = document.getElementById("profilePic");
+  let profileName = document.getElementById("profileName");
+  let userCont = document.getElementById("userCont");
+  let rowCont = document.getElementById("rowCont");
+  let homeIcon = document.getElementById("homeIcon");
+  let messageIcon = document.getElementById("messageIcon");
+  let lightIcon = document.getElementById("lightIcon");
+  let gearIcon = document.getElementById("gearIcon");
+  let main = document.getElementById("main");  
+  let modal = document.getElementById("modalPost");  
+  if(darkMode)
+  {
+    divheader.classList.toggle("navbar-dark");
+    divheader.classList.toggle("bg-dark");
+    friendDiv.classList.toggle("dark");
+    newPostDiv.classList.toggle("dark");
+    messageIcon.classList.toggle("dark");
+    homeIcon.classList.toggle("dark");
+    lightIcon.classList.toggle("dark");
+    gearIcon.classList.toggle("dark");
+    profilePic.classList.toggle("dark");
+    profileName.classList.toggle("dark");
+    userCont.classList.toggle("dark");
+    rowCont.classList.toggle("dark");
+    main.classList.toggle("dark");
+    modal.classList.toggle("bg-dark");
+  }
+}
+
+function makePost()
+{
+      /// crea un nuevo "Post"/////////////////////
+      let newPost = new Post;
+
+      ///da los valores al nuevo Post///////////////////////
+      newPost.id = allPosts.length;
+      newPost.date = Date();
+      newPost.mediaLink = document.getElementById('imgPost').value;
+      newPost.text = document.getElementById('textPost').value;
+      newPost.likes = [];
+      newPost.user = usuarioLog;
+     
+      ///valida si el form de texto no esta vacio///////
+     if(newPost.text != "")
+     {
+         ///pushea el nuevo post en el array de posts////
+         allPosts.push(newPost);
+         ///pushea el array en localstorage/////
+         localStorage.setItem('usuarioPost',JSON.stringify(allPosts));
+         ///recarga la pagina para que se muestre el nuevo post/////
+         window.location.href ="userProfile.html";
+     }
+     else
+     {
+         ///alerta si el form de texto esta vacio////////////
+         alert("¡Atencion! El post debe contener texto.")
+     }
+}

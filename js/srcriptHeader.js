@@ -1,12 +1,6 @@
 //variables para usuario actual y lista de usuarios///
 let currentUser;
-let allUsers = [];
 
-//verifica si hay usuarios para llenar la lista/////
-if(localStorage.getItem('usuarios'))
-{
-    allUsers = JSON.parse(localStorage.getItem('usuarios'));
-}
 //verifica si hay un usuario logueado/////
 if(localStorage.getItem('usuarioLog'))
 {
@@ -15,7 +9,7 @@ if(localStorage.getItem('usuarioLog'))
 //si no hay un usuario envia al logIn///
 else
 {
-    document.location('LogIn.html');
+    document.location = 'LogIn.html';
 }
 //funcion para cerrar sesion///
 function logOut()
@@ -68,6 +62,13 @@ function editProfile()
 //funcion de la barra de busqueda/////
 function search()
 {
+    let allUsers;
+    //verifica si hay usuarios para llenar la lista/////
+if(localStorage.getItem('usuarios'))
+{
+    allUsers = JSON.parse(localStorage.getItem('usuarios'));
+} 
+
     //asigna el valor de lo escrito en el form buscar en una variable
     let searchbar = document.getElementById("searchbar").value;
     searchbar = searchbar.toLowerCase();
@@ -106,5 +107,8 @@ function search()
     }
 }
    
-
+function goMain()
+{
+    document.location = "mainred.html";
+}
     
