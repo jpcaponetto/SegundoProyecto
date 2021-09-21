@@ -1,3 +1,13 @@
+html
+{
+    overflow-x: hidden;
+}
+
+main.dark
+{
+    background-color: rgb(56, 56, 56);
+}
+
 .userCont
 {
     background-color: #EAE2B7;
@@ -10,7 +20,8 @@
     z-index: 10;
 }
 .friendList
-{   margin-top: 100px;
+{   
+    margin-top: 200px;
     background-color: #d6cfa8;
     min-height: 500px;
     max-height: fit-content;
@@ -39,12 +50,12 @@ img
     object-fit: contain;
 }
 .friendList.dark {
-background-color: #000;
+background-color: rgb(44, 44, 44);
 transition: ease-in-out .3s;
 color: white
 }
 .userCont.dark {
-background-color: #000;
+background-color: black;
 transition: ease-in-out .3s;
 color: white;
 }
@@ -83,4 +94,29 @@ color: white;
 .gearIcon.dark
 {
    color: white;
+}
+
+.contenedorEnvioImg
+{
+    padding-bottom: 10px;
+    font-weight: 500;
+    font-size: medium;
+}
+.agregadoFoto.dark
+{
+    background-color: black;
+    color: white;
+}
+
+
+.profileName.dark
+{
+    background-color: black;
+    color: white;
+}
+
+.rowCont.dark
+{
+    background-color: black;
+    color: white;
 }

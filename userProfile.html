@@ -15,7 +15,7 @@
   <title>Profile</title>
 </head>
 
-<body>
+<body >
 
   <!-- <header style="margin-bottom: 189px;"> -->
   <header>
@@ -30,23 +30,25 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <form class="d-flex mx-auto">
-            <input class="form-control me-2" type="search" placeholder="Buscar.." aria-label="Search">
+            <input id="searchbar" class="form-control dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false" onkeypress="search()" type="text" name="" placeholder="Buscar..">
+            <ul id="searchList" class="dropdown-menu" aria-labelledby="searchbar">
+            </ul>
           </form>
           <ul class="navbar-nav  mb-2 mb-lg-0" id="lightIcons">
             <li class="nav-item me-2">
-              <i class="fas fa-home"></i>
+              <i id="homeIcon" class="fas fa-home homeIcon" onclick="goMain()"></i>
             </li>
             <li class="nav-item me-2">
-              <i class="fas fa-comment-dots"></i>
+              <i  id="messageIcon" class="fas fa-comment-dots messageIcon"></i>
             </li>
             <li class="nav-item me-2">
-              <i class="fas fa-lightbulb" onclick="switchColor()"></i>
+              <i id="lightIcon" class="fas fa-lightbulb lightIcon" onclick="switchColor()"></i>
             </li>
             <li class="nav-item dropdown me-2">
-              <i class="dropdown-toggle fas fa-cog lightIcons" type="button" id="dropdownMenuButton1"
+              <i class="dropdown-toggle fas fa-cog gearIcon" type="button" id="gearIcon"
                 data-bs-toggle="dropdown" aria-expanded="false">
               </i>
-              <ul class="dropdown-menu dropdown-menu-end aria-labelledby=" dropdownMenuButton1">
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="gearIcon">
                 <li><a class="dropdown-item" href="#" onclick="goProfile()">Perfil</a></li>
                 <li><a class="dropdown-item" href="#" onclick="" data-bs-toggle="modal" data-bs-target="#editar">Editar
                     Perfil</a></li>
@@ -57,19 +59,10 @@
         </div>
       </div>
     </nav>
-
-    <div class="divheader">
-      <div class="row container-fluid userbar">
-        <div class="col-12 col-md-4 avatar justify-content-start d-flex justify-content-center align-items-center"
-          id="avatarUsuario">
-        </div>
-
-      </div>
-    </div>
-    <div id="rowCont" class="row porfile justify-content-center">
+    <div id="rowCont" class="row porfile justify-content-center rowCont" >
       <div id="userCont" class="col-12 userCont">
         <div class="row">
-          <div id="profilePic" class="col-2 profilePic justify-content-center">
+          <div id="profilePic" class="col-2 profilePic justify-content-center profilePic">
           </div>
           <div id="profileName" class="col-9 profileName">
           </div>
@@ -83,7 +76,7 @@
           <div class="modal fade" id="publicar" data-bs-backdrop="false" tabindex="-1"
             aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
-              <div class="modal-content">
+              <div class="modal-content" id="modalPost">
                 <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLabel">Nueva Publicacion</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -109,17 +102,15 @@
   <!-- Fin del header , INICIO DEL MAIN -->
 
 
-  <main>
-
+  <main id="main">
     </div>
-    <aside id="row-cont" class="row content" style="padding-top: 120px; position: fixed;">
+    <aside id="row-cont" class="row content" style="margin-top: 243px;">
       <div id="friendList" class="col-3 container-fluid friendList">
         <p>Lista de amigos</p>
       </div>
-      <div id="postList" class="col-9 postList">
+      <div id="postList" class="col-9 postList" style="min-height: 420px;">
       </div>
     </aside>
-
     <script src="js/scriptProfile.js"></script>
     <script src="js/srcriptHeader.js"></script>
       <script src="https://kit.fontawesome.com/bd6ce91836.js" crossorigin="anonymous"></script>

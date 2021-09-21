@@ -27,6 +27,18 @@ defaultProfPic.src = "https://www.sogapar.info/wp-content/uploads/2015/12/defaul
 let listaAmigos = [];
 let usuarios = [];
 
+let darkMode;
+
+if(localStorage.getItem('darkMode'))
+{
+    darkMode = JSON.parse(localStorage.getItem('darkMode'));
+}
+else
+{
+    darkMode = false;
+    localStorage.setItem('darkMode', JSON.stringify(darkMode));
+}
+
 if(localStorage.getItem('usuarioLog') != "undefined")
 {
     document.location = "mainred.html";
@@ -36,6 +48,8 @@ if(localStorage.getItem('usuarios'))
 {
     usuarios = JSON.parse(localStorage.getItem('usuarios'))
 }
+
+window.onload = detectTheme();
 //Inicializando variables necesarias para la creacion de ususarios/////////////////////////////////
 
 //Log In///////////////////////////////////////////////////////////////////////
@@ -166,27 +180,39 @@ function goLogIn()
 //Registro de Usuario//////////////////////////////////////////////////////////////
 
 
-//Dark theme(fuera de uso pero funciona)//////////////////////////////////////////////////
+//Dark theme//////////////////////////////////////////////////
 
-let logIn = document.getElementById("logIn");
-let welcome = document.getElementById("welcome");
-let logFourm = document.getElementById("logFourm");
-let mail = document.getElementById("userMail");
-let pass = document.getElementById("password");
-
-let divheader = document.getElementById("divHeader");
-let lighticon = document.getElementById("lightIcon");
 function switchColor()
-
 {
-    document.body.classList.toggle("dark");
-
-    logIn.classList.toggle("dark");
-    welcome.classList.toggle("dark");
-    logFourm.classList.toggle("dark");
-    mail.classList.toggle("dark");
-    pass.classList.toggle("dark");
-    divheader.classList.toggle("dark");
-    lighticon.classList.toggle("dark");
+    darkMode = !darkMode; 
+  localStorage.setItem('darkMode', JSON.stringify(darkMode));
+  document.location = "LogIn.html"
 }
+
+
+function detectTheme()
+{
+    let logIn = document.getElementById("logIn");
+    let welcome = document.getElementById("welcome");
+    let logFourm = document.getElementById("logFourm");
+    let mail = document.getElementById("userMail");
+    let pass = document.getElementById("password");
+    
+    let divheader = document.getElementById("divHeader");
+    let lighticon = document.getElementById("lightIcon");
+    
+    if(darkMode)
+    {
+        document.body.classList.toggle("dark");
+    
+        logIn.classList.toggle("dark");
+        welcome.classList.toggle("dark");
+        logFourm.classList.toggle("dark");
+        mail.classList.toggle("dark");
+        pass.classList.toggle("dark");
+        divheader.classList.toggle("dark");
+        lighticon.classList.toggle("dark");
+    }
+}
+
 //Dark theme//////////////////////////////////////////////////
