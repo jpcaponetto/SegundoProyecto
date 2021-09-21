@@ -75,6 +75,7 @@ avatarDiv.append(avatar);
 profilePic.height = 50;
 profilePic.width = 50;
 profilePic.style.padding = "10px";
+profilePic.style.borderRadius = "25px";
 
 linkName.style.textDecoration = "none";
 linkName.style.fontSize = ""
