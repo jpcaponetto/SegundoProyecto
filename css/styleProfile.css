@@ -49,7 +49,7 @@ img
 {
     object-fit: contain;
 }
-.friendList.dark {
+.friendList.dark{
 background-color: rgb(44, 44, 44);
 transition: ease-in-out .3s;
 color: white
