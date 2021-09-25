@@ -17,7 +17,7 @@ let usuarioLog
 let allUsers = JSON.parse(localStorage.getItem('usuarios'));
 let allPosts = [];
 let noPost = document.createElement("p");
-let newPostButton = document.getElementById('agregadoFoto');
+let newPostButton = document.getElementById('newPost');
 let darkMode;
 
 if(localStorage.getItem('darkMode'))
