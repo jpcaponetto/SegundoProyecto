@@ -62,15 +62,15 @@
     <div id="rowCont" class="row porfile justify-content-center rowCont" >
       <div id="userCont" class="col-12 userCont">
         <div class="row">
-          <div id="profilePic" class="col-2 profilePic justify-content-center profilePic">
+          <div id="profilePic" class="col-12 col-md-12 col-lg-2 profilePic justify-content-center profilePic">
           </div>
-          <div id="profileName" class="col-9 profileName">
+          <div id="profileName" class="col-12 col-md-12 col-lg-9 profileName">
           </div>
         </div>
         <div id="admin" class="container-fluid">
         </div>
         <div class="col-12 contenedorEnvioImg justify-content-center" id="agregadoFoto">
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#publicar">
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#publicar" id="newPost">
             Nueva Publicacion
           </button>
           <div class="modal fade" id="publicar" data-bs-backdrop="false" tabindex="-1"
@@ -95,6 +95,12 @@
               </div>
             </div>
           </div>
+          <button type="button" class="btn btn-primary dropdown-toggle friendListMobile" id="friendListMobile" data-bs-toggle="dropdown" aria-expanded="false">
+            Amigos
+          </button>
+          <ul id="mobileFriendList" class="dropdown-menu">
+            
+          </ul>
         </div>
       </div>
     </div>
@@ -104,13 +110,13 @@
 
   <main id="main">
     </div>
-    <aside id="row-cont" class="row content" style="margin-top: 243px;">
-      <div id="friendList" class="col-3 container-fluid friendList">
+    <aside id="row-cont" class="container-fluid" style="margin-top: 45px;">
+      <div id="friendList" class=" container-fluid friendList">
         <p>Lista de amigos</p>
       </div>
-      <div id="postList" class="col-9 postList" style="min-height: 420px;">
-      </div>
     </aside>
+    <div id="postList" class="container-fluid postList" style="min-height: 420px;">
+    </div>
     <script src="js/scriptProfile.js"></script>
     <script src="js/srcriptHeader.js"></script>
       <script src="https://kit.fontawesome.com/bd6ce91836.js" crossorigin="anonymous"></script>
