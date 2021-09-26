@@ -18,10 +18,10 @@ main.dark
     font-family:sans-serif;
     top: 0;
     z-index: 10;
+    padding-top: 10px;
 }
 .friendList
 {   
-    margin-top: 200px;
     background-color: #d6cfa8;
     min-height: 500px;
     max-height: fit-content;
@@ -31,12 +31,14 @@ main.dark
 }
 .postList
 {
-    display: inline;
+   margin-top: 240px;
     list-style-type: none;
-    padding-left: 1000px;
-   align-content: center;
+    height: 100%;
 }
-
+.postList > ul
+{
+    padding-left: 300px;
+}
 .profilePic
 {
     overflow: hidden;
@@ -49,7 +51,7 @@ img
 {
     object-fit: contain;
 }
-.friendList.dark {
+.friendList.dark{
 background-color: rgb(44, 44, 44);
 transition: ease-in-out .3s;
 color: white
@@ -119,4 +121,30 @@ color: white;
 {
     background-color: black;
     color: white;
+}
+
+.friendListMobile
+{
+    visibility: hidden;
+}
+
+@media  screen and (max-width:  749px)
+{
+    body
+    {
+        width: fit-content;
+        height: 100%;
+    }
+    .friendList
+    {
+        visibility: hidden;
+    }
+    .postList > ul
+    {
+     padding-left: 0px;
+    }
+    .friendListMobile
+    {
+     visibility: visible;
+    }
 }

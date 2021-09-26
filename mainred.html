@@ -16,11 +16,11 @@
   </link>
 </head>
 
-<body>
+<body id="body">
   
   <!-- <header style="margin-bottom: 189px;"> -->
   <header>
-    <nav class="navbar navbar-expand-lg  bg-light" id="divHeader">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="divHeader">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">  <img src="https://trello.com/1/cards/613928dce89e1647977bb664/attachments/613b7d848f4dfc811c2d1249/previews/613b7d848f4dfc811c2d17b3/download/codeando.png" width="70px" height="70px" style="border-radius: 100px;"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -98,17 +98,26 @@
 
 
   <!-- Fin del header , INICIO DEL MAIN -->
-
   <main id="main">
-    <div class="row justify-content-start publiList">
-      <div class="col-sm-12 col-md-3 col-lg-9 foto" id="contenedorImg">
-      </div>
-    </div>
-    <aside class="aside_out">
-      <div class="col-3 friendList" id="friendList">
+
+    <aside class="asideList" style="position: fixed; right: 0; margin-top: 26px;">
+      <div class="container  friendList" id="friendList">
         <p>Personas que quizas conoscas</p>
       </div>
     </aside>
+    <div class="container-fluid" id="contenedorImg" style="width:100%;">
+
+    </div>
+    <div class="container-fluid friendListMobile" id="friendListMobile">
+      <div class="btn-group dropup">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+          personas que quizas conoscas
+        </button>
+        <ul id="mobileFriendList" class="dropdown-menu">
+          
+        </ul>
+      </div>
+    </div>
   </main>
   <script src="js/scriptMain.js"></script>
   <script src="js/srcriptHeader.js"></script>

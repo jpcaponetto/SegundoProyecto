@@ -75,6 +75,7 @@ avatarDiv.append(avatar);
 profilePic.height = 50;
 profilePic.width = 50;
 profilePic.style.padding = "10px";
+profilePic.style.borderRadius = "25px";
 
 linkName.style.textDecoration = "none";
 linkName.style.fontSize = ""
@@ -124,15 +125,21 @@ function makePost(){
 //funcion que muestra las publicaciones////////////
 function postsList()
 {
+    let nuevoUl = document.createElement('ul');
+    nuevoUl.style.width = "fit-content";
+    nuevoUl.style.marginTop = "100px"
+    nuevoUl.style.marginBottom = "100px"
+    nuevoUl.style.paddingRight = "30px"
+    let allUsers = JSON.parse(localStorage.getItem('usuarios'));
     ///recorre todas las publicaciones que puede ver el usuario logueado////////////
     for(var i = 0; i < usuariosPost.length; i++)
     {
+      
         ///crea los elementos de la publicacion//////////////////
-        let nuevoUl = document.createElement('ul');
         let nuevoLi = document.createElement('li');
         let postText = document.createElement('p');
         let postDate = document.createElement('p');
-        let postUser = document.createElement('p');
+        let postUser = document.createElement('a');
         let foto = document.getElementById('contenedorImg');
         let userDiv = document.createElement('div');
         let postLikes = document.createElement("h6");
@@ -143,6 +150,8 @@ function postsList()
         let img = new Image;
         
         let currentpost = usuariosPost[i];
+
+        let usuarioProf = currentpost.user;
         
         ///boton de eliminar publicacion(unicamente visible desde un usuario que sea admin)////////////
         if(usuarioLog.isAdmin)
@@ -177,7 +186,7 @@ function postsList()
         console.log(postDate);
         postUser.innerText = usuariosPost[i].user.name;
         userpic.src = usuariosPost[i].user.profilePic;
-       
+
         ///da estilos en los elementos de la publicacion////////////////
         userpic.width = 50;
         userpic.height = 50;
@@ -193,6 +202,14 @@ function postsList()
 
         postUser.style.paddingTop = "10px";
         postUser.style.paddingLeft = "10px";
+        postUser.style.textDecoration = "none"; 
+        postUser.style.color = "black";
+        postUser.onclick = function()
+        {
+            localStorage.setItem('usuarioProfile', JSON.stringify(usuarioProf));
+
+            document.location = "userProfile.html"
+        }
 
         postText.classList.toggle("card-text")
         postText.style.marginTop = "10px";
@@ -208,14 +225,16 @@ function postsList()
         foto.style.marginTop = "20px";
         foto.style.paddingBottom = "10px";
         foto.style.paddingTop = "10px";
-        foto.style.width = "800px"; 
+        foto.style.objectFit = "cover";
+
 
         nuevoLi.style.listStyle = "none";
         nuevoLi.classList.toggle("card");
+        nuevoLi.classList.toggle("mb-3");
         nuevoLi.style.width = "600px";
         nuevoLi.style.maxWidth = "600px"
+       
         
-
 
         postLikes.classList.toggle("card-list-item");
         postDate.classList.toggle("card-list-item");
@@ -224,7 +243,6 @@ function postsList()
         buttonLike.classList.toggle("btn-primary");
         buttonLike.value = "Like";
         buttonLike.innerText = "Like";
-        
       
       ///funcion del boton de like///////////////////////////////
        buttonLike.onclick = function() 
@@ -264,11 +282,7 @@ function postsList()
 
         if(darkMode == true)
         {
-            foto.classList.toggle("card-img-top")
-            foto.style.marginTop = "20px";
-            foto.style.paddingBottom = "10px";
-            foto.style.paddingTop = "10px";
-            foto.style.width = "800px"; 
+            
             nuevoLi.style.listStyle = "none";
             nuevoLi.classList.toggle("text-white");
             nuevoLi.classList.toggle("bg-dark");
@@ -324,12 +338,17 @@ function sugestUsers()
     {
         ///crea los elementos del item de usuario////////////////////
         let users = document.getElementById("friendList");
+        let mobileList = document.getElementById("mobileFriendList");
         let usersUL = document.createElement('ul');
         let usersLI = document.createElement('li');
+        let mobileLI = document.createElement('li');
         let userName = document.createElement('a');
+        let mobUserName = document.createElement('a');
         let userDiv = document.createElement('div');
+        let mobileUserDiv = document.createElement('div');
         let friendButton = document.createElement('button');
         let userPic = new Image;
+        let mobUserPic = new Image;
            
 
         let usuarioProf = userList[i];
@@ -342,6 +361,15 @@ function sugestUsers()
         {
             userName.style.color = "white";
         }
+         
+        mobUserName.innerText = userList[i].name;
+        mobUserName.style.textDecoration = "none";
+        mobUserName.style.color = "black";
+        if(darkMode)
+        {
+            mobUserName.style.color = "white";
+        }
+
         ///funcion de ir al perfil del usuario/////////
         userName.onclick = function()
         {
@@ -353,6 +381,15 @@ function sugestUsers()
         }
         userName.style.paddingLeft = "5px";
        
+        mobUserName.onclick = function()
+        {
+            console.log(usuarioProf);
+            
+            localStorage.setItem('usuarioProfile', JSON.stringify(usuarioProf));
+
+            document.location = "userProfile.html"
+        }
+
         let newFriend = userList[i];
 
         ///estilos al boton de "Seguir"/////////
@@ -391,11 +428,20 @@ function sugestUsers()
         userPic.width = 50;
         userPic.height = 50;
 
+        mobUserPic.src = userList[i].profilePic;
+        mobUserPic.style.borderRadius = "25px";
+        mobUserPic.width = 50;
+        mobUserPic.height = 50;
+
         ///appendea los elementos//////
         userDiv.append(userPic);
         userDiv.append(userName);
         userDiv.append(friendButton);
         usersLI.append(userDiv);
+        mobileUserDiv.append(mobUserPic);
+        mobileUserDiv.append(mobUserName);
+        mobileLI.append(mobileUserDiv);
+        mobileList.append(mobileLI);
         usersUL.append(usersLI);
         users.append(usersUL);
     }
@@ -422,6 +468,9 @@ function detectTheme()
   let gearIcon = document.getElementById("gearIcon");
   let main = document.getElementById("main");  
   let modal = document.getElementById("modalPost");  
+  let body = document.getElementById("body");  
+  let mobileFriendList = document.getElementById("friendListMobile");  
+  let mobileList = document.getElementById("mobileFriendList");  
   if(darkMode)
   {
     divheader.classList.toggle("navbar-dark");
@@ -436,5 +485,8 @@ function detectTheme()
     gearIcon.classList.toggle("dark");
     main.classList.toggle("dark");
     modal.classList.toggle("bg-dark");
+    body.classList.toggle("bg-dark");
+    mobileFriendList.classList.toggle("dark");
+    mobileList.classList.toggle("dropdown-menu-dark");
   }
 }
