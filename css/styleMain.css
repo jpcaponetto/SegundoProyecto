@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&family=Scheherazade+New&family=Stick+No+Bills:wght@300;400&display=swap');
+
+
 html
 {
     background-color: rgb(97, 95, 95);
@@ -31,7 +34,6 @@ main.dark
 }
 .avatar
 {
-    background-color: #EAE2B7;
     text-align: start;
     font-size: xx-large;
     z-index: 10;
@@ -40,7 +42,6 @@ main.dark
 .contenedorEnvioImg
 {
     transition: ease-in-out .3s;
-    background-color: #EAE2B7;
     padding-bottom: 10px;
     z-index: 10;
     align-items: flex-end;
@@ -89,7 +90,6 @@ background-color: #000;
 .avatarUsuario
 {
     transition: ease-in-out .3s;
-    background-color: #EAE2B7;
     color: black;
 }
 .avatarUsuario a
@@ -161,9 +161,7 @@ background-color: #000;
     color: white;
 }
 @media screen and (max-width: 1159px){
-    .aside_out{
-        position: static; 
-    }
+    
     .friendList{
         min-height: auto;
         width: 100%;
@@ -185,4 +183,25 @@ background-color: #000;
     }
   
 }
-    
+.navbar-dark{
+    background-color: #000;
+    color: white
+}
+.navbar-light{
+    background: rgb(244,241,230);
+    background: linear-gradient(180deg, rgba(244,241,230,1) 0%, rgba(234,226,183,1) 100%);
+    color: black;
+
+}
+.card-text {
+    font-family: 'Roboto Slab', serif;
+}    
+.card-list-item{
+        font-family: 'Scheherazade New', serif;
+}
+/* color: #ffffff;
+background-image: linear-gradient(
+   to top,
+   rgb(252, 240, 240),
+   #B5838D);
+ font-family: "Kaushan Script", cursive; */

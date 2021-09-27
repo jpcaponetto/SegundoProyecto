@@ -126,6 +126,7 @@ function makePost(){
 function postsList()
 {
     let nuevoUl = document.createElement('ul');
+    nuevoUl.className = "tarjeta";
     nuevoUl.style.width = "fit-content";
     nuevoUl.style.marginTop = "100px"
     nuevoUl.style.marginBottom = "100px"
@@ -195,7 +196,7 @@ function postsList()
         userpic.style.width = "50px";
         userpic.style.borderRadius = "25px";
         
-        userDiv.classList.toggle("card-header")
+        userDiv.classList.toggle("card-header");
         userDiv.style.display = "inline-flex";
         userDiv.style.textAlign = "center";
         userDiv.style.marginTop = "0px";
@@ -209,6 +210,10 @@ function postsList()
             localStorage.setItem('usuarioProfile', JSON.stringify(usuarioProf));
 
             document.location = "userProfile.html"
+        }
+        if(darkMode)
+        {
+            postUser.style.color = "white";
         }
 
         postText.classList.toggle("card-text")
@@ -282,12 +287,9 @@ function postsList()
 
         if(darkMode == true)
         {
-            
             nuevoLi.style.listStyle = "none";
             nuevoLi.classList.toggle("text-white");
             nuevoLi.classList.toggle("bg-dark");
-            postText.classList.toggle("card-text");
-
             postText.style.backgroundColor = "black";
         }
 
@@ -474,7 +476,7 @@ function detectTheme()
   if(darkMode)
   {
     divheader.classList.toggle("navbar-dark");
-    divheader.classList.toggle("bg-dark");
+    divheader.classList.toggle("navbar-light");
     userBar.classList.toggle("dark");
     friendDiv.classList.toggle("dark");
     avatarDiv.classList.toggle("dark");
