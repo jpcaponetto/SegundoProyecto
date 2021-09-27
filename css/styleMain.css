@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&family=Scheherazade+New&family=Stick+No+Bills:wght@300;400&display=swap');
+
+
 html
 {
     background-color: rgb(97, 95, 95);
@@ -161,9 +164,7 @@ background-color: #000;
     color: white;
 }
 @media screen and (max-width: 1159px){
-    .aside_out{
-        position: static; 
-    }
+    
     .friendList{
         min-height: auto;
         width: 100%;
@@ -185,4 +186,3 @@ background-color: #000;
     }
   
 }
-    
