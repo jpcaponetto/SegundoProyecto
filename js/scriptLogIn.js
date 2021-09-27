@@ -187,8 +187,13 @@ function validateMail(mail)
 {
     const valid = usuarios.find(usuario => usuario.mail == mail)
 
+
     return valid;
 }
+
+
+
+
 
 //Login
 
