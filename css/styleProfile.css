@@ -26,18 +26,21 @@ main.dark
     min-height: 500px;
     max-height: fit-content;
     position: fixed;
+    max-width: 300px;
     left: 0;
     padding-right: 200px;
+    padding-top: 20px;
 }
 .postList
 {
-   margin-top: 240px;
+    margin-top: 240px;
     list-style-type: none;
     height: 100%;
+    
 }
 .postList > ul
 {
-    padding-left: 300px;
+    padding-left: 500px;
 }
 .profilePic
 {

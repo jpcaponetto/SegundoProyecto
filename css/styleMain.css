@@ -164,9 +164,7 @@ background-color: #000;
     color: white;
 }
 @media screen and (max-width: 1159px){
-    .aside_out{
-        position: static; 
-    }
+    
     .friendList{
         min-height: auto;
         width: 100%;
