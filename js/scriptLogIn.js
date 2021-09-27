@@ -114,7 +114,7 @@ function userRegister()
     {
         usuarios.push(userNew);
         localStorage.setItem('usuarios', JSON.stringify(usuarios));
-       // document.location = "LogIn.html"
+        document.location = "LogIn.html"
         console.log("susses");
         console.log(usuarios);
     }
