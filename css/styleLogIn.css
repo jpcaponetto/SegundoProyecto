@@ -1,13 +1,14 @@
 body
 {
     overflow-x: hidden;
-    overflow-y: hidden;
+
 }
 
 .logIn
 {
+
+    padding-top: 80px;
     transition:1s ease all;
-    padding-top: 30px;
     align-content: center;
     background-color: #EAE2B7;
     overflow-x: hidden;
@@ -22,31 +23,33 @@ body
     overflow-x: hidden;
     overflow-y: hidden;
 }
-
-
 .welcome
 {
+    font-family: 'Kaisei Tokumin', serif; 
     transition:1s ease all;
     text-align: center;
-    background-color: #EAE2B7;
+    background-color: transparent;
     color: black;
+    background-size: cover;
 }
 .welcome.dark
 {
     transition:1s ease all;
     text-align: center;
     background-color: black;
-    color: #EAE2B7;
+    color: rgb(212, 141, 162);
 }
 
 
 .logFourm
 {
+    font-family: 'Kaisei Tokumin', serif; 
+    margin: 20px;
     transition:1s ease all;
     border: solid rgba(0, 0, 0, 0.356) 2px;
     padding: 50px;
     border-radius: 25px;
-    background-color:#f3edc9;
+    background-color:whitesmoke;
     color: black;
 }
 .logFourm.dark
@@ -55,6 +58,24 @@ body
     border-radius: 25px;
     transition:1s ease all;
     background-color: rgb(95, 95, 95);
+    color: #EAE2B7;
+}
+.mail.dark
+{
+    background-color: black;
+    color: #EAE2B7;
+}
+.pass.dark
+{
+    background-color: black;
+    color: #EAE2B7;
+}
+@media  screen and (max-width:  749px)
+{
+    .welcome
+    {
+        background-image: none;
+    }
 }
 
 .username
