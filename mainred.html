@@ -57,6 +57,28 @@
                 </ul>
             </li>
           </ul>
+          <div class="modal fade" id="editar" data-bs-backdrop="false" tabindex="-1"
+          aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div id="modalPost" class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Editar Perfil</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <label for="imgPost">Nueva foto de perfil</label>
+                <input id="newPic" class="form-control" type="text" placeholder="URL">
+                <br>
+                <label for="textPost">Nuevo Nombre</label>
+                <textarea id="newName" class="form-control" type="text"
+                  placeholder="como quieres que te llamen"></textarea>
+              </div>
+              <div class="modal-footer">
+                <button onclick="makePost()" id="enviarimg" class="btn btn-success">editar</button>
+              </div>
+            </div>
+          </div>
+        </div>
         </div>
       </div>
      
