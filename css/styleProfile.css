@@ -1,0 +1,153 @@
+html
+{
+    overflow-x: hidden;
+}
+
+main.dark
+{
+    background-color: rgb(56, 56, 56);
+}
+
+.userCont
+{
+    background-color: #EAE2B7;
+    color: black;
+    text-align: center;
+    font-weight: 800;
+    font-size: xx-large;
+    font-family:sans-serif;
+    top: 0;
+    z-index: 10;
+    padding-top: 10px;
+}
+.friendList
+{   
+    background-color: #d6cfa8;
+    min-height: 500px;
+    max-height: fit-content;
+    position: fixed;
+    max-width: 300px;
+    left: 0;
+    padding-right: 200px;
+    padding-top: 20px;
+}
+.postList
+{
+    margin-top: 240px;
+    list-style-type: none;
+    height: 100%;
+    
+}
+.postList > ul
+{
+    padding-left: 500px;
+}
+.profilePic
+{
+    overflow: hidden;
+    background-color: rgba(128, 128, 128, 0);
+    border-radius: 100px;
+    align-items: center;
+    margin-left: 15px;
+}
+img
+{
+    object-fit: contain;
+}
+.friendList.dark{
+background-color: rgb(44, 44, 44);
+transition: ease-in-out .3s;
+color: white
+}
+.userCont.dark {
+background-color: black;
+transition: ease-in-out .3s;
+color: white;
+}
+.homeIcon
+{
+    transition: ease-in-out .3s;
+    color: black;
+}
+.homeIcon.dark
+{
+    color: white;
+}
+.messageIcon
+{
+    color: black;
+}
+.messageIcon.dark
+{
+    transition: ease-in-out .3s;
+    color: white;
+}
+.lightIcon
+{
+    transition: ease-in-out .3s;
+    color: black;
+}
+.lightIcon.dark
+{
+    color: white;
+}
+.gearIcon
+{
+    transition: ease-in-out .3s;
+    color: black;
+}
+.gearIcon.dark
+{
+   color: white;
+}
+
+.contenedorEnvioImg
+{
+    padding-bottom: 10px;
+    font-weight: 500;
+    font-size: medium;
+}
+.agregadoFoto.dark
+{
+    background-color: black;
+    color: white;
+}
+
+
+.profileName.dark
+{
+    background-color: black;
+    color: white;
+}
+
+.rowCont.dark
+{
+    background-color: black;
+    color: white;
+}
+
+.friendListMobile
+{
+    visibility: hidden;
+}
+
+@media  screen and (max-width:  749px)
+{
+    body
+    {
+        width: fit-content;
+        height: 100%;
+    }
+    .friendList
+    {
+        visibility: hidden;
+    }
+    .postList > ul
+    {
+     padding-left: 0px;
+    }
+    .friendListMobile
+    {
+     visibility: visible;
+    }
+}
