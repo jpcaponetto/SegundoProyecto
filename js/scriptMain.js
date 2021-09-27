@@ -30,7 +30,7 @@ else
 }
 
 
-if(localStorage.getItem('usuarioLog') != "undefined")
+if(localStorage.getItem('usuarioLog'))
 {
   usuarioLog = JSON.parse(localStorage.getItem('usuarioLog'));
 }
