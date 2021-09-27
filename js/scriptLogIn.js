@@ -102,7 +102,7 @@ function userRegister()
     }
    
     //Valida y Guarda el usuario en LocalStorage
-    if(userNew.firstName != "" || userNew.password != "" || !validateMail(userNew.mail))
+    if(userNew.firstName != "" && userNew.password != "" && !validateMail(userNew.mail))
     {
         usuarios.push(userNew);
         localStorage.setItem('usuarios', JSON.stringify(usuarios));
