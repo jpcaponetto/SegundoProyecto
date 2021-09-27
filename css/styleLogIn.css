@@ -6,24 +6,23 @@ body
 
 .logIn
 {
+
     padding-top: 80px;
     transition:1s ease all;
     align-content: center;
     background-color: #EAE2B7;
     overflow-x: hidden;
     overflow-y: hidden;
-      
 }
 .logIn.dark
 {
+    padding-top: 30px;
     align-content: center;
     transition:1s ease all;
     background-color: black;
     overflow-x: hidden;
     overflow-y: hidden;
 }
-
-
 .welcome
 {
     font-family: 'Kaisei Tokumin', serif; 
@@ -60,28 +59,32 @@ body
     transition:1s ease all;
     background-color: rgb(95, 95, 95);
     color: #EAE2B7;
-
 }
-
 .mail.dark
 {
     background-color: black;
     color: #EAE2B7;
-
 }
 .pass.dark
 {
     background-color: black;
     color: #EAE2B7;
-
 }
-
 @media  screen and (max-width:  749px)
 {
     .welcome
     {
         background-image: none;
     }
+}
+
+.username
+{
+    background-color: #EAE2B7;
+}
+.username.dark
+{
+    background-color: grey;
 }
 
 

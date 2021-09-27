@@ -1,4 +1,5 @@
 //Clases/////////////////////////////////////////////////////////////////////////
+
 class User
 {
     constructor(id, firstName, lastName, password, mail, birthDate, phone, friendsList, name, profilePic)
@@ -15,10 +16,10 @@ class User
         this.isActive = true;
         this.isAdmin = false;
         this.profilePic = profilePic;
-       
     }
 }
 //clases/////////////////////////////////////////////////////////
+
 
 
 // Inicializando variables necesarias para la creacion de ususarios////////////////////////////////
@@ -75,7 +76,6 @@ function LogIn()
         {
            alert("!Atencion¡ este usuario se encuentra momentaneamente blockeado") 
         }
-      
     }
     else
     {
@@ -148,8 +148,6 @@ function userRegister()
         {
             alert("Ya hay una cuenta registrada con esa direccion");
         }
-
-
         console.log("Error datos no validos");
         console.log(userNew.password);
     }
@@ -181,15 +179,24 @@ function goLogIn()
 
 
 //Dark theme//////////////////////////////////////////////////
+//validar Mail para que no puedan registrar mas de una cuenta con cada uno
 
+function validateMail(mail)
+{
+    const valid = usuarios.find(usuario => usuario.mail == mail)
+
+    return valid;
+}
+
+//Login
+
+//Dark theme
 function switchColor()
 {
     darkMode = !darkMode; 
   localStorage.setItem('darkMode', JSON.stringify(darkMode));
   document.location = "LogIn.html"
 }
-
-
 function detectTheme()
 {
     let logIn = document.getElementById("logIn");
@@ -216,3 +223,4 @@ function detectTheme()
 }
 
 //Dark theme//////////////////////////////////////////////////
+
