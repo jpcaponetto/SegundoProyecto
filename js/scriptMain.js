@@ -475,7 +475,7 @@ function detectTheme()
   if(darkMode)
   {
     divheader.classList.toggle("navbar-dark");
-    divheader.classList.toggle("bg-dark");
+    divheader.classList.toggle("navbar-light");
     userBar.classList.toggle("dark");
     friendDiv.classList.toggle("dark");
     avatarDiv.classList.toggle("dark");
