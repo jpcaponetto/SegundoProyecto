@@ -36,7 +36,7 @@ if(localStorage.getItem('usuarioLog') != undefined)
 }
 else
 {
-    document.location = 'LogIn.html';
+   // document.location = 'LogIn.html';
 }
 
 
