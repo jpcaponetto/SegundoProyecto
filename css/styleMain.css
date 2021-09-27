@@ -2,6 +2,10 @@ html
 {
     background-color: rgb(97, 95, 95);
 }
+body
+{
+    width: 100%;
+}
 main{
     margin-top: 9rem;
 }
@@ -12,7 +16,7 @@ main.dark
 .publiList
 {
     margin-top: 170px;
-    padding-left: 100px;
+    width: fit-content;
 }
 .foto ul{
     display: flex;
@@ -80,6 +84,7 @@ color: whitesmoke;
 .contenedorEnvioImg.dark 
 {
 background-color: #000;
+
 }
 .avatarUsuario
 {
@@ -136,4 +141,48 @@ background-color: #000;
 .gearIcon.dark
 {
    color: white;
+   transition: ease-in-out .3s;
 }
+
+.friendListMobile
+{
+    visibility: hidden;
+    width: 100%;
+    height: 80px;
+    background-color: #EAE2B7;
+    color: black;
+    position: fixed;
+    bottom: 0;
+    padding-top: 15px;
+}
+.friendListMobile.dark
+{
+    background-color: rgb(36, 36, 36);
+    color: white;
+}
+@media screen and (max-width: 1159px){
+    .aside_out{
+        position: static; 
+    }
+    .friendList{
+        min-height: auto;
+        width: 100%;
+    }
+}
+@media  screen and (max-width:  749px)
+{
+    body
+    {
+        width: fit-content;
+    }
+    .asideList
+    {
+        visibility: hidden;
+    }
+    .friendListMobile
+    {
+        visibility: visible;
+    }
+  
+}
+    

@@ -41,7 +41,7 @@ else
 
 if(localStorage.getItem('usuarioLog') != "undefined")
 {
-    document.location = "mainred.html";
+   // document.location = "mainred.html";
 }
 
 if(localStorage.getItem('usuarios'))
@@ -110,11 +110,11 @@ function userRegister()
     }
    
     //Valida y Guarda el usuario en LocalStorage
-    if(userNew.firstName != "" || userNew.password != "" || !validateMail(userNew.mail))
+    if(userNew.firstName != "" && userNew.password != "" && !validateMail(userNew.mail))
     {
         usuarios.push(userNew);
         localStorage.setItem('usuarios', JSON.stringify(usuarios));
-        document.location = "LogIn.html"
+       // document.location = "LogIn.html"
         console.log("susses");
         console.log(usuarios);
     }
@@ -159,10 +159,12 @@ function userRegister()
 
 function validateMail(mail)
 {
-    const valid = usuarios.find(usuario => usuario.mail == mail)
-
+    let valid = usuarios.find(usuario => usuario.mail == mail)
     
+    console.log(valid);
+
     return valid;
+    
 }
 
 //cancela la creacion de un usuario y vuelve a la pantalla de logIn
