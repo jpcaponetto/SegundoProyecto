@@ -16,10 +16,6 @@ main.dark
 {
     background-color: rgb(54, 54, 54);
 }
-.titulologo{
-    font-family: 'Stick No Bills', sans-serif; 
-}
-
 .publiList
 {
     margin-top: 170px;
@@ -192,14 +188,3 @@ background-color: #000;
     }
   
 }
-.tarjeta
-{
-font-family: 'Roboto Slab', serif;
-}
-#nombrelogo {
-    background-color: black;
-    font-family: 'Scheherazade New', serif;
-}
-.card-text {
-    font-family: 'Roboto Slab', serif;
-}    

@@ -19,7 +19,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Stick+No+Bills:wght@300&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body id="body">
   
   <!-- <header style="margin-bottom: 189px;"> -->
   <header>
@@ -103,15 +103,25 @@
   <!-- Fin del header , INICIO DEL MAIN -->
 
   <main id="main">
-    <div class="row justify-content-start publiList">
-      <div class="col-sm-12 col-md-3 col-lg-9 foto" id="contenedorImg">
-      </div>
-    </div>
-    <aside class="aside_out">
-      <div class="col-3 friendList" id="friendList">
+
+    <aside class="asideList" style="position: fixed; right: 0; margin-top: 26px;">
+      <div class="container  friendList" id="friendList">
         <p>Personas que quizas conoscas</p>
       </div>
     </aside>
+    <div class="container-fluid" id="contenedorImg" style="width:100%;">
+
+    </div>
+    <div class="container-fluid friendListMobile" id="friendListMobile">
+      <div class="btn-group dropup">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+          personas que quizas conoscas
+        </button>
+        <ul id="mobileFriendList" class="dropdown-menu">
+          
+        </ul>
+      </div>
+    </div>
   </main>
   <script src="js/scriptMain.js"></script>
   <script src="js/srcriptHeader.js"></script>
