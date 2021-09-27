@@ -193,7 +193,12 @@ background-color: #000;
     color: black;
 
 }
-
+.card-text {
+    font-family: 'Roboto Slab', serif;
+}    
+.card-list-item{
+        font-family: 'Scheherazade New', serif;
+}
 /* color: #ffffff;
 background-image: linear-gradient(
    to top,
