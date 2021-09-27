@@ -30,13 +30,13 @@ else
 }
 
 
-if(localStorage.getItem('usuarioLog') != undefined)
+if(localStorage.getItem('usuarioLog') != "undefined")
 {
   usuarioLog = JSON.parse(localStorage.getItem('usuarioLog'));
 }
 else
 {
-   // document.location = 'LogIn.html';
+   document.location = 'LogIn.html';
 }
 
 
