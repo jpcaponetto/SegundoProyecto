@@ -41,7 +41,7 @@ else
 
 if(localStorage.getItem('usuarioLog') != "undefined")
 {
-    document.location = "mainred.html";
+   // document.location = "mainred.html";
 }
 
 if(localStorage.getItem('usuarios'))
