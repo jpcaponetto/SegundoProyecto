@@ -1,0 +1,88 @@
+body
+{
+    overflow-x: hidden;
+
+}
+
+.logIn
+{
+    padding-top: 80px;
+    transition:1s ease all;
+    align-content: center;
+    background-color: #EAE2B7;
+    overflow-x: hidden;
+    overflow-y: hidden;
+      
+}
+.logIn.dark
+{
+    align-content: center;
+    transition:1s ease all;
+    background-color: black;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+
+.welcome
+{
+    font-family: 'Kaisei Tokumin', serif; 
+    transition:1s ease all;
+    text-align: center;
+    background-color: transparent;
+    color: black;
+    background-size: cover;
+}
+.welcome.dark
+{
+    transition:1s ease all;
+    text-align: center;
+    background-color: black;
+    color: rgb(212, 141, 162);
+}
+
+
+.logFourm
+{
+    font-family: 'Kaisei Tokumin', serif; 
+    margin: 20px;
+    transition:1s ease all;
+    border: solid rgba(0, 0, 0, 0.356) 2px;
+    padding: 50px;
+    border-radius: 25px;
+    background-color:whitesmoke;
+    color: black;
+}
+.logFourm.dark
+{
+    border: solid rgba(0, 0, 0, 0.356) 2px;
+    border-radius: 25px;
+    transition:1s ease all;
+    background-color: rgb(95, 95, 95);
+    color: #EAE2B7;
+
+}
+
+.mail.dark
+{
+    background-color: black;
+    color: #EAE2B7;
+
+}
+.pass.dark
+{
+    background-color: black;
+    color: #EAE2B7;
+
+}
+
+@media  screen and (max-width:  749px)
+{
+    .welcome
+    {
+        background-image: none;
+    }
+}
+
+
+

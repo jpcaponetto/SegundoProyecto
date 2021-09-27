@@ -1,0 +1,56 @@
+
+header{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 20;
+    
+}
+/* #userbar 
+{
+    padding: 2rem;
+    color: #ffffff;
+   background-image: linear-gradient(
+      to top,
+      rgb(252, 240, 240),
+      #B5838D);
+    font-family: "Kaushan Script", cursive;
+    size: 20px;
+    text-decoration: none;
+} */
+.divheader.dark
+{
+    align-content: center;
+    transition:1s ease all;
+    background-color: black;
+    overflow: hidden;
+}
+
+.divheader 
+{
+    font-family: 'Kaisei Tokumin', serif; 
+    transition:1s ease all;
+    text-align: center;
+    background-color: #EAE2B7;
+    color: black;
+    padding: 10px;
+    display: flex;
+}
+.iconos
+{
+    align-items: flex-end !important;
+    text-align: end;
+}
+.logo
+{
+    text-align: start !important;
+}
+#searchbar 
+{
+display: flex;
+}
+#lightIcon.dark
+{
+color: #fff;
+transition: .3s ease-in-out;
+}
