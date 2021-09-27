@@ -1,8 +1,8 @@
 let user;
 
-if(localStorage.getItem('currentUser'))
+if(localStorage.getItem('usuarioLog'))
 {
-    user = JSON.parse(localStorage.getItem('currentUser'));
+    user = JSON.parse(localStorage.getItem('usuarioLog'));
 }
 
 if(user != "undefined")

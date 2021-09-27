@@ -211,6 +211,10 @@ function postsList()
 
             document.location = "userProfile.html"
         }
+        if(darkMode)
+        {
+            postUser.style.color = "white";
+        }
 
         postText.classList.toggle("card-text")
         postText.style.marginTop = "10px";
@@ -283,12 +287,9 @@ function postsList()
 
         if(darkMode == true)
         {
-            
             nuevoLi.style.listStyle = "none";
             nuevoLi.classList.toggle("text-white");
             nuevoLi.classList.toggle("bg-dark");
-            postText.classList.toggle("card-text");
-
             postText.style.backgroundColor = "black";
         }
 
