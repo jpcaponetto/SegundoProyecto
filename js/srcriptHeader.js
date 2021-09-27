@@ -36,10 +36,11 @@ function goProfile()
 ///funcion de editar perfil////
 function editProfile()
 {
+    let allUsers = JSON.parse(localStorage.getItem('usuarios'));
     //asigna los valores de los forms en variables 
     let newName = document.getElementById('newName').value;
     let newPic = document.getElementById('newPic').value;
-    
+
     //verifica si los valores no son nulos y los asigna
     if(newName != "")
     {
